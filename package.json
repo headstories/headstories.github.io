@@ -1,0 +1,28 @@
+{
+  "name": "headstories",
+  "description": "Website for HEAD STORIES.",
+  "version": "0.0.1",
+  "author": "Andre Zimpel <andrezimpel@me.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/andrezimpel/headstories.git"
+  },
+  "devDependencies": {
+    "path": "latest",
+    "bower": "latest",
+    "gulp": "latest",
+    "gulp-watch": "latest",
+    "gulp-uglify": "latest",
+    "gulp-sass": "latest",
+    "gulp-concat": "latest",
+    "gulp-cleanhtml": "latest",
+    "gulp-minify-css": "latest",
+    "gulp-cssmin": "latest",
+    "gulp-rename": "latest",
+    "gulp-plumber": "latest"
+  },
+  "engineStrict": true,
+  "engines": {
+    "node": ">= 0.9"
+  }
+}
