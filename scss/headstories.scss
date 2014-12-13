@@ -1,0 +1,83 @@
+$font-size-base: 20px;
+$black: rgba(black, 0.8);
+$link-color: $black;
+
+$space: 40px;
+$space-large: $space * 2;
+$space-medium: $space / 2;
+$space-small: $space / 4;
+$space-mini: $space / 8;
+$space-tiny: $space / 16;
+
+@import "../bower_components/bootstrap-sass-official/assets/stylesheets/_bootstrap";
+//@import url("http://fonts.googleapis.com/css?family=Lato:400,700");
+
+
+html, body {
+  font-family: 'head stories', sans-serif;
+  color: $black;
+  height: 100%;
+  text-align: center;
+  width: 100%;
+}
+
+.page {
+  display: table;
+  height: 100%;
+  width: 100%;
+}
+
+.welcome {
+  @include transition(1s opacity);
+
+  display: table-cell;
+  opacity: 1;
+  vertical-align: middle;
+  width: 100%;
+
+  &.faded {
+    opacity: 0;
+  }
+
+  .item {
+    display: none;
+    font-size: 50px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .item.active {
+    display: block;
+    margin: auto;
+  }
+
+  .item-final {
+    @include transition(1s opacity);
+
+    display: block;
+    opacity: 0;
+    position: absolute;
+  }
+  .item-final.active-final {
+    @include transition(1s opacity);
+
+    margin: auto;
+    opacity: 1;
+    position: relative;
+  }
+}
+
+.head-stories-logo {
+  margin-left: 42px;
+  max-width: 300px;
+}
+
+
+.imprint-link {
+  bottom: 0;
+  font-size: 14px;
+  font-weight: bold;
+  padding: $space-small $space-medium;
+  position: fixed;
+  right: 0;
+}

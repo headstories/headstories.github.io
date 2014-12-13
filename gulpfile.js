@@ -5,7 +5,9 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     path = require('path'),
     cleanhtml = require('gulp-cleanhtml'),
-    minifyCSS = require('gulp-minify-css');
+    minifyCSS = require('gulp-minify-css'),
+    rename = require('gulp-rename'),
+    plumber = require('gulp-plumber');
 
 
 // ------------------------------------------
@@ -51,39 +53,37 @@ gulp.task('html_prod', function () {
 
 // compile sass to css and store it in dist
 gulp.task('sass', function () {
-  gulp.src('./scss/andrezimpel.scss')
+  gulp.src('./scss/headstories.scss')
+    .pipe(plumber())
     .pipe(sass())
-    .pipe(minifyCSS({
-      removeEmpty: true
-    }))
     .pipe(gulp.dest('./dist/css'));
 });
 
-
-
 gulp.task('scripts', function() {
   gulp.src([
-            './bower_components/jquery/dist/jquery.js',
-            './bower_components/bootstrap-sass/js/transition.js',
-            './bower_components/bootstrap-sass/js/alert.js',
-            './bower_components/bootstrap-sass/js/button.js',
-            './bower_components/bootstrap-sass/js/carousel.js',
-            './bower_components/bootstrap-sass/js/collapse.js',
-            './bower_components/bootstrap-sass/js/dropdown.js',
-            './bower_components/bootstrap-sass/js/modal.js',
-            './bower_components/bootstrap-sass/js/tooltip.js',
-            './bower_components/bootstrap-sass/js/popover.js',
-            './bower_components/bootstrap-sass/js/scrollspy.js',
-            './bower_components/bootstrap-sass/js/tab.js',
-            './bower_components/bootstrap-sass/js/affix.js',
-            './bower_components/twitter-text/twitter-text.js',
-            './bower_components/momentjs/moment.js',
-            './bower_components/instafeed.js/instafeed.js',
-            "./javascripts/main.js"
+            './bower_components/jquery/jquery.js',
+            './bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/transition.js',
+            './bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/alert.js',
+            './bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/button.js',
+            './bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/carousel.js',
+            './bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/collapse.js',
+            './bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/dropdown.js',
+            './bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/modal.js',
+            './bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/tooltip.js',
+            './bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/popover.js',
+            './bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/scrollspy.js',
+            './bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/tab.js',
+            './bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/affix.js',
+            "./javascripts/headstories.js"
             ])
+    .pipe(plumber())
+    .pipe(concat('headstories.js'))
+    // This will output the non-minified version
+    .pipe(gulp.dest('./dist/js'))
+    // This will minify and rename to foo.min.js
     .pipe(uglify())
-    .pipe(concat('andrezimpel.min.js'))
-    .pipe(gulp.dest('./dist/js'));
+    .pipe(rename({ extname: '.min.js' }))
+    .pipe(gulp.dest('./dist/js'))
 });
 
 // images
