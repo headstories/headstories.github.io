@@ -33,7 +33,6 @@ function next_slide(element, container) {
   }
 
   if($new_element.hasClass("item-final")) {
-    console.log("fin");
     $items.removeClass("active");
     prepare_fin(container);
     return;

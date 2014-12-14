@@ -29,6 +29,7 @@ html, body {
   font-family: 'headstories', sans-serif;
   color: $black;
   height: 100%;
+  overflow: hidden;
   text-align: center;
   width: 100%;
 
@@ -92,14 +93,18 @@ hr {
 
     display: block;
     opacity: 0;
+    height: 0;
     position: absolute;
+    visibility: hidden;
   }
   .item-final.active-final {
     @include transition(1.2s opacity);
 
+    height: auto;
     margin: auto;
     opacity: 1;
     position: relative;
+    visibility: visible;
   }
 }
 

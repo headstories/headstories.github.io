@@ -4662,6 +4662,7 @@ html, body {
   font-family: 'headstories', sans-serif;
   color: rgba(0, 0, 0, 0.8);
   height: 100%;
+  overflow: hidden;
   text-align: center;
   width: 100%;
   -webkit-user-select: none;
@@ -4718,14 +4719,18 @@ hr {
     transition: 1.2s opacity;
     display: block;
     opacity: 0;
-    position: absolute; }
+    height: 0;
+    position: absolute;
+    visibility: hidden; }
   .welcome .item-final.active-final {
     -webkit-transition: 1.2s opacity;
     -o-transition: 1.2s opacity;
     transition: 1.2s opacity;
+    height: auto;
     margin: auto;
     opacity: 1;
-    position: relative; }
+    position: relative;
+    visibility: visible; }
 
 .head-stories-logo {
   margin-left: 42px;
