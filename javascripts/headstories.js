@@ -1,6 +1,12 @@
+$(document).ready(function(){
+  $('[data-hires]').sharpness({
+    browsers: ['msie8', 'msie9']
+  });
+});
+
 $(window).load(function(){
 
-  window.delay = 310;
+  window.delay = 350;
 
   start_animation();
 

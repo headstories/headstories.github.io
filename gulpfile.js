@@ -62,6 +62,10 @@ gulp.task('sass', function () {
 gulp.task('scripts', function() {
   gulp.src([
             './bower_components/jquery/jquery.js',
+            './bower_components/modernizr/modernizr.js',
+            './bower_components/bowser/bowser.js',
+            './bower_components/demography/demography.js',
+            './bower_components/sharpness/sharpness.js',
             './bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/transition.js',
             './bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/alert.js',
             './bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/button.js',

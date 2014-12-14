@@ -19,7 +19,31 @@ html, body {
   height: 100%;
   text-align: center;
   width: 100%;
+
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+
+  /* No support for these yet, use at own risk */
+  -o-user-select: none;
+  user-select: none;
 }
+
+hr {
+  border-color: black;
+  max-width: 560px;
+}
+
+.selectable {
+  -webkit-user-select: text;  /* Chrome all / Safari all */
+  -moz-user-select: text;     /* Firefox all */
+  -ms-user-select: text;      /* IE 10+ */
+
+  /* No support for these yet, use at own risk */
+  -o-user-select: text;
+  user-select: text;
+}
+
 
 .page {
   display: table;
@@ -52,14 +76,14 @@ html, body {
   }
 
   .item-final {
-    @include transition(1s opacity);
+    @include transition(1.2s opacity);
 
     display: block;
     opacity: 0;
     position: absolute;
   }
   .item-final.active-final {
-    @include transition(1s opacity);
+    @include transition(1.2s opacity);
 
     margin: auto;
     opacity: 1;
@@ -73,19 +97,48 @@ html, body {
 }
 
 
+
+
+.hero {
+  font-size: 29px;
+
+  .head-stories-logo {
+    margin-top: -$space;
+    margin-bottom: $space-large + $space;
+  }
+
+  span, a {
+    margin-left: $space-medium;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+
+  a {
+    cursor: pointer;
+  }
+}
+
+
+
+
+
+
+
 .footer {
   @extend .clearfix;
   @include transition(1s opacity);
 
   bottom: 0;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: bold;
   left: 0;
   position: fixed;
   opacity: 1;
   right: 0;
 
-  &.faded {    
+  &.faded {
     opacity: 0;
   }
 
