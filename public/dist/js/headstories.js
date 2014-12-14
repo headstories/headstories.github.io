@@ -13673,7 +13673,7 @@ function prepare_fin(container) {
   setTimeout(function(){
     $(".item-final").addClass("active-final");
     $(".footer").removeClass("faded");
-  }, 1500);
+  }, 1200);
 }
 
 
