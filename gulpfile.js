@@ -17,6 +17,7 @@ var gulp = require('gulp'),
 var paths = {
   scripts: ['javascripts/**/*.js'],
   images: 'img/**/*',
+  fonts: 'fonts/**/*',
   sass: "scss/**/*.scss",
   html: "content/index.html",
   public_dist: "dist/**/*.*"
@@ -96,6 +97,12 @@ gulp.task('images', function () {
     .pipe(gulp.dest('./dist/img'));
 });
 
+// fonts
+gulp.task('fonts', function () {
+  gulp.src(paths.fonts)
+  .pipe(gulp.dest('./dist/fonts'));
+});
+
 // copy files from dist to public dist as they change
 gulp.task('public_dist', function () {
   gulp.src(paths.public_dist)
@@ -106,4 +113,4 @@ gulp.task('public_dist', function () {
 
 
 // The default task (called when you run `gulp` from cli)
-gulp.task('default', ['sass', 'images', 'html_dev', 'html_prod', 'public_dist', 'scripts', 'watch']);
+gulp.task('default', ['sass', 'images','fonts', 'html_dev', 'html_prod', 'public_dist', 'scripts', 'watch']);
