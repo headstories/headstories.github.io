@@ -73,11 +73,31 @@ html, body {
 }
 
 
-.imprint-link {
+.footer {
+  @extend .clearfix;
+  @include transition(1s opacity);
+
   bottom: 0;
   font-size: 14px;
   font-weight: bold;
-  padding: $space-small $space-medium;
+  left: 0;
   position: fixed;
+  opacity: 1;
   right: 0;
+
+  &.faded {    
+    opacity: 0;
+  }
+
+  a, span {
+    display: inline-block;
+    padding: $space-small $space-medium;
+  }
+}
+
+.adress {
+  float: left;
+}
+.imprint-link {
+  float: right;
 }

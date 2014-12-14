@@ -4463,10 +4463,10 @@ button.close {
   .carousel-indicators {
     bottom: 20px; } }
 
-.clearfix:before, .clearfix:after {
+.clearfix:before, .footer:before, .clearfix:after, .footer:after {
   content: " ";
   display: table; }
-.clearfix:after {
+.clearfix:after, .footer:after {
   clear: both; }
 
 .center-block {
@@ -4700,10 +4700,25 @@ html, body {
   margin-left: 42px;
   max-width: 300px; }
 
-.imprint-link {
+.footer {
+  -webkit-transition: 1s opacity;
+  -o-transition: 1s opacity;
+  transition: 1s opacity;
   bottom: 0;
   font-size: 14px;
   font-weight: bold;
-  padding: 10px 20px;
+  left: 0;
   position: fixed;
+  opacity: 1;
   right: 0; }
+  .footer.faded {
+    opacity: 0; }
+  .footer a, .footer span {
+    display: inline-block;
+    padding: 10px 20px; }
+
+.adress {
+  float: left; }
+
+.imprint-link {
+  float: right; }

@@ -11857,9 +11857,11 @@ if ( typeof define === "function" && define.amd && define.amd.jQuery ) {
 
 $(window).load(function(){
 
-  window.delay = 250;
+  window.delay = 310;
 
   start_animation();
+
+  $("#replay").click(replay);
 });
 
 function start_animation() {
@@ -11905,5 +11907,16 @@ function next_slide(element, container) {
 function prepare_fin(container) {
   setTimeout(function(){
     $(".item-final").addClass("active-final");
+    $(".footer").removeClass("faded");
   }, 1500);
+}
+
+
+function replay() {
+  setTimeout(function(){
+    $(".item-final").removeClass("active-final");
+    $(".footer").addClass("faded");
+  }, 1000);
+
+  start_animation();
 }
