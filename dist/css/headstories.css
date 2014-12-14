@@ -4674,6 +4674,7 @@ html, body {
   /* No support for these yet, use at own risk */
   -o-user-select: none;
   user-select: none; }
+  @media (max-width: 767px) { }
 
 hr {
   border-color: black;
@@ -4733,14 +4734,20 @@ hr {
     visibility: visible; }
 
 .head-stories-logo {
-  margin-left: 42px;
-  max-width: 300px; }
+  margin-left: 32px;
+  max-width: 220px; }
+  @media (min-width: 768px) {
+    .head-stories-logo {
+      max-width: 300px; } }
 
 .hero {
   font-size: 29px; }
   .hero .head-stories-logo {
-    margin-top: -40px;
-    margin-bottom: 120px; }
+    margin-bottom: 120px;
+    margin-top: 40px; }
+    @media (min-width: 768px) {
+      .hero .head-stories-logo {
+        margin-top: -40px; } }
   .hero span, .hero a {
     margin-left: 20px; }
     .hero span:first-child, .hero a:first-child {
@@ -4752,13 +4759,15 @@ hr {
   -webkit-transition: 1s opacity;
   -o-transition: 1s opacity;
   transition: 1s opacity;
-  bottom: 0;
   font-size: 13px;
   font-weight: bold;
-  left: 0;
-  position: fixed;
-  opacity: 1;
-  right: 0; }
+  opacity: 1; }
+  @media (min-width: 768px) {
+    .footer {
+      bottom: 0;
+      left: 0;
+      position: fixed;
+      right: 0; } }
   .footer.faded {
     opacity: 0; }
   .footer a, .footer span {

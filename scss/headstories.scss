@@ -40,6 +40,9 @@ html, body {
   /* No support for these yet, use at own risk */
   -o-user-select: none;
   user-select: none;
+
+  @media (max-width: $screen-xs-max) {
+  }
 }
 
 hr {
@@ -109,8 +112,12 @@ hr {
 }
 
 .head-stories-logo {
-  margin-left: 42px;
-  max-width: 300px;
+  margin-left: 32px;
+  max-width: 220px;
+
+  @media (min-width: $screen-sm-min) {
+    max-width: 300px;
+  }
 }
 
 
@@ -120,8 +127,12 @@ hr {
   font-size: 29px;
 
   .head-stories-logo {
-    margin-top: -$space;
     margin-bottom: $space-large + $space;
+    margin-top: $space;
+
+    @media (min-width: $screen-sm-min) {
+      margin-top: -$space;
+    }
   }
 
   span, a {
@@ -147,13 +158,17 @@ hr {
   @extend .clearfix;
   @include transition(1s opacity);
 
-  bottom: 0;
   font-size: 13px;
   font-weight: bold;
-  left: 0;
-  position: fixed;
   opacity: 1;
-  right: 0;
+
+
+  @media (min-width: $screen-sm-min) {
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    right: 0;
+  }
 
   &.faded {
     opacity: 0;
