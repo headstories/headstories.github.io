@@ -1,11 +1,11 @@
 {
   "name": "headstories",
   "description": "Website for HEAD STORIES.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Andre Zimpel <andrezimpel@me.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/andrezimpel/headstories.git"
+    "url": "https://github.com/headstories/headstories.github.io.git"
   },
   "devDependencies": {
     "path": "latest",

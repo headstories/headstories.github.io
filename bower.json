@@ -1,6 +1,6 @@
 {
   "name": "headstories",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "dist/css/headstories.css",
   "dependencies": {
     "bootstrap-sass-official": "3.3.0",
@@ -26,7 +26,7 @@
     "headstories"
   ],
   "license": "MIT",
-  "homepage": "www.headstories.com",
+  "homepage": "www.headstories.de",
   "ignore": [
     "**/.*",
     "node_modules",
