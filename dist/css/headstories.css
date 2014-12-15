@@ -4822,7 +4822,6 @@ hr {
   .footer.faded {
     opacity: 0; }
   .footer a, .footer span {
-    display: inline-block;
     padding: 10px 20px; }
 
 .adress {
