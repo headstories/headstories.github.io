@@ -145,10 +145,11 @@ hr {
 }
 
 .head-stories-logo {
-  margin-left: 75px;
+  margin-left: 65px;
   max-width: 220px;
 
   @media (min-width: $screen-sm-min) {
+    margin-left: 75px;
     max-width: 320px;
   }
 }

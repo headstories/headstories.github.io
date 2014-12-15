@@ -4758,10 +4758,11 @@ hr {
     visibility: visible; }
 
 .head-stories-logo {
-  margin-left: 75px;
+  margin-left: 65px;
   max-width: 220px; }
   @media (min-width: 768px) {
     .head-stories-logo {
+      margin-left: 75px;
       max-width: 320px; } }
 
 .hero {
