@@ -4661,10 +4661,8 @@ button.close {
 html, body {
   font-family: 'headstories', sans-serif;
   color: black;
-  height: 100%;
-  overflow: hidden;
+  cursor: default;
   text-align: center;
-  width: 100%;
   -webkit-user-select: none;
   /* Chrome all / Safari all */
   -moz-user-select: none;
@@ -4674,11 +4672,34 @@ html, body {
   /* No support for these yet, use at own risk */
   -o-user-select: none;
   user-select: none; }
-  @media (max-width: 767px) { }
+  @media (min-width: 768px) {
+    html, body {
+      height: 100%;
+      overflow: hidden;
+      width: 100%; } }
+
+.animation-on-going {
+  height: 100%;
+  overflow: hidden;
+  width: 100%; }
+  .animation-on-going body {
+    height: 100%;
+    overflow: hidden;
+    width: 100%; }
+    .animation-on-going body .page {
+      display: table;
+      height: 100%;
+      width: 100%; }
+      .animation-on-going body .page .welcome {
+        display: table-cell; }
 
 hr {
   border-color: black;
   max-width: 560px; }
+  @media (max-width: 767px) {
+    hr {
+      max-width: 85%;
+      margin: 60px auto; } }
 
 .selectable {
   -webkit-user-select: text;
@@ -4691,19 +4712,22 @@ hr {
   -o-user-select: text;
   user-select: text; }
 
-.page {
-  display: table;
-  height: 100%;
-  width: 100%; }
+@media (min-width: 768px) {
+  .page {
+    display: table;
+    height: 100%;
+    width: 100%; } }
 
 .welcome {
   -webkit-transition: 1s opacity;
   -o-transition: 1s opacity;
   transition: 1s opacity;
-  display: table-cell;
   opacity: 1;
   vertical-align: middle;
   width: 100%; }
+  @media (min-width: 768px) {
+    .welcome {
+      display: table-cell; } }
   .welcome.faded {
     opacity: 0; }
   .welcome .item {
@@ -4734,26 +4758,48 @@ hr {
     visibility: visible; }
 
 .head-stories-logo {
-  margin-left: 32px;
+  margin-left: 75px;
   max-width: 220px; }
   @media (min-width: 768px) {
     .head-stories-logo {
-      max-width: 300px; } }
+      max-width: 320px; } }
 
 .hero {
   font-size: 29px; }
+  @media (max-width: 767px) {
+    .hero {
+      font-size: 22px; } }
   .hero .head-stories-logo {
     margin-bottom: 120px;
     margin-top: 40px; }
+    @media (max-width: 767px) {
+      .hero .head-stories-logo {
+        margin-bottom: 60px; } }
     @media (min-width: 768px) {
       .hero .head-stories-logo {
         margin-top: -40px; } }
   .hero span, .hero a {
     margin-left: 20px; }
+    @media (max-width: 767px) {
+      .hero span, .hero a {
+        display: block;
+        margin: 0;
+        text-align: center;
+        width: 100%; } }
     .hero span:first-child, .hero a:first-child {
       margin-left: 0; }
   .hero a {
     cursor: pointer; }
+  @media (max-width: 767px) {
+    .hero p {
+      margin: 0; }
+    .hero .opening span {
+      display: inline-block;
+      width: auto; }
+      .hero .opening span:last-child {
+        margin-left: 20px; }
+    .hero .booking-contact {
+      margin-bottom: 40px; } }
 
 .footer {
   -webkit-transition: 1s opacity;
@@ -4762,12 +4808,17 @@ hr {
   font-size: 13px;
   font-weight: bold;
   opacity: 1; }
+  @media (max-width: 767px) {
+    .footer {
+      margin-bottom: 10px; } }
   @media (min-width: 768px) {
     .footer {
       bottom: 0;
       left: 0;
       position: fixed;
-      right: 0; } }
+      right: 0; }
+      .footer hr {
+        display: none; } }
   .footer.faded {
     opacity: 0; }
   .footer a, .footer span {
@@ -4779,3 +4830,10 @@ hr {
 
 .imprint-link {
   float: right; }
+
+@media (max-width: 767px) {
+  .footer .imprint-link, .footer .adress {
+    float: none;
+    display: block;
+    text-align: center;
+    width: 100%; } }

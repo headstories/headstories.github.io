@@ -13623,9 +13623,9 @@ $(document).ready(function(){
 
 $(window).load(function(){
 
-  window.delay = 350;
+  window.delay = 370;
 
-  start_animation();
+  setTimeout(start_animation, 500);
 
   $("#replay").click(replay);
 });
@@ -13670,6 +13670,9 @@ function next_slide(element, container) {
 }
 
 function prepare_fin(container) {
+  $(".item-final").removeClass("hidden");
+  $("html").removeClass("animation-on-going");
+
   setTimeout(function(){
     $(".item-final").addClass("active-final");
     $(".footer").removeClass("faded");

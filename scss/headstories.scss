@@ -28,10 +28,8 @@ $space-tiny: $space / 16;
 html, body {
   font-family: 'headstories', sans-serif;
   color: $black;
-  height: 100%;
-  overflow: hidden;
+  cursor: default;
   text-align: center;
-  width: 100%;
 
   -webkit-user-select: none;  /* Chrome all / Safari all */
   -moz-user-select: none;     /* Firefox all */
@@ -41,13 +39,43 @@ html, body {
   -o-user-select: none;
   user-select: none;
 
-  @media (max-width: $screen-xs-max) {
+  @media (min-width: $screen-sm-min) {
+    height: 100%;
+    overflow: hidden;
+    width: 100%;
+  }
+}
+
+.animation-on-going {
+  height: 100%;
+  overflow: hidden;
+  width: 100%;
+
+  body {
+    height: 100%;
+    overflow: hidden;
+    width: 100%;
+
+    .page {
+      display: table;
+      height: 100%;
+      width: 100%;
+
+      .welcome {
+        display: table-cell;
+      }
+    }
   }
 }
 
 hr {
   border-color: black;
   max-width: 560px;
+
+  @media (max-width: $screen-xs-max) {
+    max-width: 85%;
+    margin: ($space + $space-medium) auto;
+  }
 }
 
 .selectable {
@@ -62,18 +90,23 @@ hr {
 
 
 .page {
-  display: table;
-  height: 100%;
-  width: 100%;
+  @media (min-width: $screen-sm-min) {
+    display: table;
+    height: 100%;
+    width: 100%;
+  }
 }
 
 .welcome {
   @include transition(1s opacity);
 
-  display: table-cell;
   opacity: 1;
   vertical-align: middle;
   width: 100%;
+
+  @media (min-width: $screen-sm-min) {
+    display: table-cell;
+  }
 
   &.faded {
     opacity: 0;
@@ -112,11 +145,11 @@ hr {
 }
 
 .head-stories-logo {
-  margin-left: 32px;
+  margin-left: 75px;
   max-width: 220px;
 
   @media (min-width: $screen-sm-min) {
-    max-width: 300px;
+    max-width: 320px;
   }
 }
 
@@ -126,9 +159,17 @@ hr {
 .hero {
   font-size: 29px;
 
+  @media (max-width: $screen-xs-max) {
+    font-size: 22px;
+  }
+
   .head-stories-logo {
     margin-bottom: $space-large + $space;
     margin-top: $space;
+
+    @media (max-width: $screen-xs-max) {
+      margin-bottom: $space + $space-medium;
+    }
 
     @media (min-width: $screen-sm-min) {
       margin-top: -$space;
@@ -138,6 +179,13 @@ hr {
   span, a {
     margin-left: $space-medium;
 
+    @media (max-width: $screen-xs-max) {
+      display: block;
+      margin: 0;
+      text-align: center;
+      width: 100%;
+    }
+
     &:first-child {
       margin-left: 0;
     }
@@ -145,6 +193,23 @@ hr {
 
   a {
     cursor: pointer;
+  }
+
+  @media (max-width: $screen-xs-max) {
+    p {
+      margin: 0;
+    }
+    .opening span {
+      display: inline-block;
+      width: auto;
+
+      &:last-child {
+        margin-left: $space-medium;
+      }
+    }
+    .booking-contact {
+      margin-bottom: $space;
+    }
   }
 }
 
@@ -162,12 +227,19 @@ hr {
   font-weight: bold;
   opacity: 1;
 
+  @media (max-width: $screen-xs-max) {
+    margin-bottom: $space-small;
+  }
 
   @media (min-width: $screen-sm-min) {
     bottom: 0;
     left: 0;
     position: fixed;
     right: 0;
+
+    hr {
+      display: none;
+    }
   }
 
   &.faded {
@@ -185,4 +257,12 @@ hr {
 }
 .imprint-link {
   float: right;
+}
+@media (max-width: $screen-xs-max) {
+  .footer .imprint-link, .footer .adress {
+    float: none;
+    display: block;
+    text-align: center;
+    width: 100%;
+  }
 }
