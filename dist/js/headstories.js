@@ -13625,7 +13625,9 @@ $(window).load(function(){
 
   window.delay = 370;
 
-  setTimeout(start_animation, 500);
+  if ($("body").hasClass("home")) {
+    setTimeout(start_animation, 500);
+  }
 
   $("#replay").click(replay);
 });

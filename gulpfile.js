@@ -1,12 +1,13 @@
 var gulp = require('gulp'),
     watch = require('gulp-watch'),
     uglify = require('gulp-uglify'),
-    sass = require('gulp-sass'),
+    sass = require('gulp-ruby-sass'),
     concat = require('gulp-concat'),
     path = require('path'),
     cleanhtml = require('gulp-cleanhtml'),
     minifyCSS = require('gulp-minify-css'),
     rename = require('gulp-rename'),
+    fileinclude = require('gulp-file-include'),
     plumber = require('gulp-plumber');
 
 
@@ -42,11 +43,19 @@ gulp.task('watch', function () {
 gulp.task('html_dev', function () {
   gulp.src(paths.html)
     .pipe(cleanhtml())
+    .pipe(fileinclude({
+      prefix: '@@',
+      basepath: "./"
+    }))
     .pipe(gulp.dest('./public/'));
 });
 gulp.task('html_prod', function () {
   gulp.src(paths.html)
     .pipe(cleanhtml())
+    .pipe(fileinclude({
+      prefix: '@@',
+      basepath: "./"
+    }))
     .pipe(gulp.dest('./'));
 });
 

@@ -9,7 +9,10 @@ $space-small: $space / 4;
 $space-mini: $space / 8;
 $space-tiny: $space / 16;
 
+$fa-font-path:        "//netdna.bootstrapcdn.com/font-awesome/4.1.0/fonts";
+
 @import "../bower_components/bootstrap-sass-official/assets/stylesheets/_bootstrap";
+@import "../bower_components/font-awesome/scss/font-awesome";
 //@import url("http://fonts.googleapis.com/css?family=Lato:400,700");
 
 @font-face {
@@ -38,15 +41,25 @@ html, body {
   /* No support for these yet, use at own risk */
   -o-user-select: none;
   user-select: none;
+}
 
+.home {
   @media (min-width: $screen-sm-min) {
     height: 100%;
     overflow: hidden;
     width: 100%;
   }
+
+  body {
+    @media (min-width: $screen-sm-min) {
+      height: 100%;
+      overflow: hidden;
+      width: 100%;
+    }
+  }
 }
 
-.animation-on-going {
+.animation-on-going.home {
   height: 100%;
   overflow: hidden;
   width: 100%;
@@ -89,7 +102,7 @@ hr {
 }
 
 
-.page {
+.home .page {
   @media (min-width: $screen-sm-min) {
     display: table;
     height: 100%;
@@ -224,6 +237,7 @@ hr {
   @extend .clearfix;
   @include transition(1s opacity);
 
+  background: white;
   font-size: 13px;
   font-weight: bold;
   opacity: 1;
@@ -264,5 +278,34 @@ hr {
     display: block;
     text-align: center;
     width: 100%;
+  }
+}
+
+
+
+
+
+.imprint {
+  .page {
+    max-width: 700px;
+    margin: auto;
+    margin-bottom: $space-large;
+  }
+  .welcome {
+    padding: 0 $space-large;
+    text-align: left;
+
+    h1, h2, h3, h4, p {
+      max-width: 700px;
+      margin: $space auto;
+    }
+
+    h1 {
+      small {
+        display: block;
+        font-size: 12px;
+        margin-top: 10px;
+      }
+    }
   }
 }

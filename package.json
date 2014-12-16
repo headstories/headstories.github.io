@@ -13,13 +13,14 @@
     "gulp": "latest",
     "gulp-watch": "latest",
     "gulp-uglify": "latest",
-    "gulp-sass": "latest",
+    "gulp-ruby-sass": "latest",
     "gulp-concat": "latest",
     "gulp-cleanhtml": "latest",
     "gulp-minify-css": "latest",
     "gulp-cssmin": "latest",
     "gulp-rename": "latest",
-    "gulp-plumber": "latest"
+    "gulp-plumber": "latest",
+    "gulp-file-include": "latest"
   },
   "engineStrict": true,
   "engines": {
