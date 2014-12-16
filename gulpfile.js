@@ -19,7 +19,7 @@ var paths = {
   images: 'img/**/*',
   fonts: 'fonts/**/*',
   sass: "scss/**/*.scss",
-  html: "content/index.html",
+  html: "content/**/*.html",
   public_dist: "dist/**/*.*"
 };
 
