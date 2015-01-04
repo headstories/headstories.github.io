@@ -20,7 +20,8 @@
     "gulp-cssmin": "latest",
     "gulp-rename": "latest",
     "gulp-plumber": "latest",
-    "gulp-file-include": "latest"
+    "gulp-file-include": "latest",
+    "gulp-image-resize": "latest"
   },
   "engineStrict": true,
   "engines": {

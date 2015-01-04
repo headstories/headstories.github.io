@@ -1,0 +1,12 @@
+.billboard-image {
+  @extend .img-responsive;
+}
+
+.fb-like {
+  display: inline-block !important;
+  margin: $space auto 0 auto;
+}
+
+.home .page {
+  text-align: center;
+}

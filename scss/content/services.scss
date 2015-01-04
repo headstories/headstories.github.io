@@ -1,0 +1,13 @@
+.table-services {
+  margin-bottom: $space;
+  width: 100%;
+
+  td:nth-child(2) {
+    width: 50%;
+  }
+}
+.table-divider {
+  td {
+    padding-top: $space-small + $space-mini;
+  }
+}

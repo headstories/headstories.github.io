@@ -1,0 +1,119 @@
+.navbar {
+  border: 0;
+  border-bottom: 2px $black solid;
+  border-radius: 0;
+  height: auto;
+  margin: 0;
+  min-height: 0;
+}
+
+.navbar-collapse {
+  padding: 0 $space-small;
+}
+
+.navbar-brand {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 42px;
+  padding: $space-small;
+  text-transform: uppercase;
+
+  @media (min-width: $screen-sm) {
+    display: none;
+  }
+}
+
+
+.navbar-header {
+  border-bottom: 2px $black solid;
+  margin-bottom: -2px;
+}
+
+
+.navbar-nav {
+
+  &.nav {
+    > li {
+      > a {
+        font-family: 'Josefin Sans', sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 1;
+        padding: $space-small ($space-small + $space-mini);
+        margin-bottom: -2px;
+        text-transform: uppercase;
+
+        @media (min-width: $screen-sm) {
+          border-bottom: 2px solid $black;
+          padding: $space-small;
+        }
+      }
+
+      &:hover a,
+      &.active a {
+        background: white;
+        border-color: $brand-primary;
+        color: $brand-primary;
+      }
+    }
+  }
+
+  &.navbar-right {
+    @media (min-width: $screen-sm) {
+      margin: 0;
+    }
+  }
+
+}
+
+.icon-bar {
+  background: $black;
+}
+
+.navbar-toggle {
+  margin-right: 10px;
+
+  .icon-bar {
+    background-color: $text-color;
+    position: relative;
+    transition: all 150ms ease-in-out;
+  }
+
+  .icon-bar:nth-of-type(2) {
+    top: 1px;
+  }
+  .icon-bar:nth-of-type(3) {
+    top: 2px;
+  }
+  .icon-bar:nth-child(2) {
+    top: 6px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+  }
+  .icon-bar:nth-child(3) {
+    background-color: transparent;
+  }
+  .icon-bar:nth-child(4) {
+    top: -6px;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+  }
+
+  &.collapsed {
+    .icon-bar:nth-child(2) {
+      top: 0;
+      transform: rotate(0);
+      -webkit-transform: rotate(0);
+    }
+    .icon-bar:nth-child(3) {
+      background-color: $text-color;
+      top: 1px;
+    }
+    .icon-bar:nth-child(4) {
+      top: 2px;
+      transform: rotate(0);
+      -webkit-transform: rotate(0);
+    }
+  }
+}

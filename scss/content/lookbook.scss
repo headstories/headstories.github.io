@@ -1,0 +1,72 @@
+.lookbook-grid {
+  @include make-row;
+
+  margin-left: -1px;
+  margin-right: -1px;
+  margin-bottom: $space;
+}
+
+.lookbook-grid-item {
+  @include make-xs-column(6);
+  @include make-sm-column(2);
+  @include make-md-column(2);
+
+  padding-left: 1px;
+  padding-right: 1px;
+  margin-bottom: 2px;
+
+  a {
+    display: block;
+  }
+
+  img {
+    @extend .img-responsive;
+  }
+}
+
+
+.blueimp-gallery {
+  background: white;
+  background: rgba(white, 0.96);
+
+  .slide img.slide-content {
+    max-height: 80% !important;
+    max-width: 80% !important;
+  }
+
+  .close {
+    color: $black;
+    font-weight: bold;
+    text-shadow: none;
+
+    &:hover {
+      color: $black;
+    }
+  }
+
+  .next, .prev {
+    background: none;
+    border: 0;
+    color: $black;
+    text-shadow: none;
+
+    &:hover {
+      color: $black;
+    }
+  }
+
+  .indicator li {
+    box-shadow: none;
+    border-radius: 20px;
+    opacity: 0.4;
+    height: 14px;
+    width: 14px;
+
+    &.active {
+      border-color: $brand-primary;
+      opacity: 1;
+      height: 14px;
+      width: 14px;
+    }
+  }
+}
