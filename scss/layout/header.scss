@@ -13,5 +13,12 @@
     display: block;
     padding: $space;
     margin-left: 65px;
+
+    @media (max-width: $screen-xs-max) {
+      img {
+        max-width: 180px;
+        margin: 0;
+      }
+    }
   }
 }

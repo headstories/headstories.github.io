@@ -15,7 +15,8 @@
     "demography": "0.0.6",
     "masonry": "3.1.5",
     "sharpness": "latest",
-    "jquery-instagram": "latest"
+    "jquery-instagram": "latest",
+    "blueimp-bootstrap-image-gallery": "latest"
   },
   "authors": [
     "(Andre Zimpel <andrezimpel@me.com>)"
