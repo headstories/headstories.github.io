@@ -33,7 +33,7 @@ var paths = {
 // Retrun the task when a file changes
 gulp.task('watch', function () {
   gulp.watch(paths.scripts, ['scripts']);
-  gulp.watch(paths.images, ['images', 'lookbook_imagaes']);
+  gulp.watch(paths.images, ['images']);
   gulp.watch(paths.sass, ['sass']);
   gulp.watch(paths.watch_html, ['html_dev', "html_prod"]);
   gulp.watch(paths.public_dist, ['public_dist']);
@@ -90,6 +90,10 @@ gulp.task('scripts', function() {
             './bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/scrollspy.js',
             './bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/tab.js',
             './bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/affix.js',
+            './bower_components/blueimp-gallery/js/blueimp-gallery.js',
+            './bower_components/blueimp-gallery/js/blueimp-gallery-indicator.js',
+            './bower_components/blueimp-gallery/js/jquery.blueimp-gallery.js',
+            './bower_components/blueimp-bootstrap-image-gallery/js/bootstrap-image-gallery.js',
             './bower_components/jquery-instagram/dist/instagram.js',
             "./javascripts/headstories.js"
             ])
@@ -123,7 +127,7 @@ gulp.task('public_dist', function () {
 
 
 // crop images
-gulp.task('lookbook_imagaes', function () {
+gulp.task('lookbook_images', function () {
   gulp.src("./img/lookbook/**/*.{jpg,png}")
   .pipe(imageResize({
     width : 185,
@@ -136,8 +140,8 @@ gulp.task('lookbook_imagaes', function () {
   // 2x
   gulp.src("./img/lookbook/**/*.{jpg,png}")
   .pipe(imageResize({
-    width : 185,
-    height : 185,
+    width : 370,
+    height : 370,
     crop : true,
     upscale : true
   }))
@@ -149,4 +153,4 @@ gulp.task('lookbook_imagaes', function () {
 
 
 // The default task (called when you run `gulp` from cli)
-gulp.task('default', ['sass', 'images','fonts', 'html_dev', 'html_prod', 'public_dist', 'scripts', 'lookbook_imagaes', 'watch']);
+gulp.task('default', ['sass', 'images','fonts', 'html_dev', 'html_prod', 'public_dist', 'scripts', 'lookbook_images', 'watch']);

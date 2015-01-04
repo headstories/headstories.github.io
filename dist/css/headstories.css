@@ -9118,6 +9118,378 @@ Copyright (c) 2013 Daniel Eden
   -webkit-animation-name: zoomOutUp;
   animation-name: zoomOutUp; }
 
+/*
+ * blueimp Gallery CSS 2.11.1
+ * https://github.com/blueimp/Gallery
+ *
+ * Copyright 2013, Sebastian Tschan
+ * https://blueimp.net
+ *
+ * Licensed under the MIT license:
+ * http://www.opensource.org/licenses/MIT
+ */
+.blueimp-gallery,
+.blueimp-gallery > .slides > .slide > .slide-content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  /* Prevent artifacts in Mozilla Firefox: */
+  -moz-backface-visibility: hidden; }
+
+.blueimp-gallery > .slides > .slide > .slide-content {
+  margin: auto;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  opacity: 1; }
+
+.blueimp-gallery {
+  position: fixed;
+  z-index: 999999;
+  overflow: hidden;
+  background: #000;
+  background: rgba(0, 0, 0, 0.9);
+  opacity: 0;
+  display: none;
+  direction: ltr;
+  -ms-touch-action: none;
+  touch-action: none; }
+
+.blueimp-gallery-carousel {
+  position: relative;
+  z-index: auto;
+  margin: 1em auto;
+  /* Set the carousel width/height ratio to 16/9: */
+  padding-bottom: 56.25%;
+  box-shadow: 0 0 10px #000;
+  -ms-touch-action: pan-y;
+  touch-action: pan-y; }
+
+.blueimp-gallery-display {
+  display: block;
+  opacity: 1; }
+
+.blueimp-gallery > .slides {
+  position: relative;
+  height: 100%;
+  overflow: hidden; }
+
+.blueimp-gallery-carousel > .slides {
+  position: absolute; }
+
+.blueimp-gallery > .slides > .slide {
+  position: relative;
+  float: left;
+  height: 100%;
+  text-align: center;
+  -webkit-transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+  -moz-transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+  -ms-transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+  -o-transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1); }
+
+.blueimp-gallery,
+.blueimp-gallery > .slides > .slide > .slide-content {
+  -webkit-transition: opacity 0.5s linear;
+  -moz-transition: opacity 0.5s linear;
+  -ms-transition: opacity 0.5s linear;
+  -o-transition: opacity 0.5s linear;
+  transition: opacity 0.5s linear; }
+
+.blueimp-gallery > .slides > .slide-loading {
+  background: url(../img/loading.gif) center no-repeat;
+  background-size: 64px 64px; }
+
+.blueimp-gallery > .slides > .slide-loading > .slide-content {
+  opacity: 0; }
+
+.blueimp-gallery > .slides > .slide-error {
+  background: url(../img/error.png) center no-repeat; }
+
+.blueimp-gallery > .slides > .slide-error > .slide-content {
+  display: none; }
+
+.blueimp-gallery > .prev,
+.blueimp-gallery > .next {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  width: 40px;
+  height: 40px;
+  margin-top: -23px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 60px;
+  font-weight: 100;
+  line-height: 30px;
+  color: #fff;
+  text-decoration: none;
+  text-shadow: 0 0 2px #000;
+  text-align: center;
+  background: #222;
+  background: rgba(0, 0, 0, 0.5);
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  border: 3px solid #fff;
+  -webkit-border-radius: 23px;
+  -moz-border-radius: 23px;
+  border-radius: 23px;
+  opacity: 0.5;
+  cursor: pointer;
+  display: none; }
+
+.blueimp-gallery > .next {
+  left: auto;
+  right: 15px; }
+
+.blueimp-gallery > .close,
+.blueimp-gallery > .title {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  margin: 0 40px 0 0;
+  font-size: 20px;
+  line-height: 30px;
+  color: #fff;
+  text-shadow: 0 0 2px #000;
+  opacity: 0.8;
+  display: none; }
+
+.blueimp-gallery > .close {
+  padding: 15px;
+  right: 15px;
+  left: auto;
+  margin: -15px;
+  font-size: 30px;
+  text-decoration: none;
+  cursor: pointer; }
+
+.blueimp-gallery > .play-pause {
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+  width: 15px;
+  height: 15px;
+  background: url(../img/play-pause.png) 0 0 no-repeat;
+  cursor: pointer;
+  opacity: 0.5;
+  display: none; }
+
+.blueimp-gallery-playing > .play-pause {
+  background-position: -15px 0; }
+
+.blueimp-gallery > .prev:hover,
+.blueimp-gallery > .next:hover,
+.blueimp-gallery > .close:hover,
+.blueimp-gallery > .title:hover,
+.blueimp-gallery > .play-pause:hover {
+  color: #fff;
+  opacity: 1; }
+
+.blueimp-gallery-controls > .prev,
+.blueimp-gallery-controls > .next,
+.blueimp-gallery-controls > .close,
+.blueimp-gallery-controls > .title,
+.blueimp-gallery-controls > .play-pause {
+  display: block;
+  /* Fix z-index issues (controls behind slide element) on Android: */
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0); }
+
+.blueimp-gallery-single > .prev,
+.blueimp-gallery-left > .prev,
+.blueimp-gallery-single > .next,
+.blueimp-gallery-right > .next,
+.blueimp-gallery-single > .play-pause {
+  display: none; }
+
+.blueimp-gallery > .slides > .slide > .slide-content,
+.blueimp-gallery > .prev,
+.blueimp-gallery > .next,
+.blueimp-gallery > .close,
+.blueimp-gallery > .play-pause {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
+/* Replace PNGs with SVGs for capable browsers (excluding IE<9) */
+body:last-child .blueimp-gallery > .slides > .slide-error {
+  background-image: url(../img/error.svg); }
+
+body:last-child .blueimp-gallery > .play-pause {
+  width: 20px;
+  height: 20px;
+  background-size: 40px 20px;
+  background-image: url(../img/play-pause.svg); }
+
+body:last-child .blueimp-gallery-playing > .play-pause {
+  background-position: -20px 0; }
+
+/* IE7 fixes */
+* + html .blueimp-gallery > .slides > .slide {
+  min-height: 300px; }
+
+* + html .blueimp-gallery > .slides > .slide > .slide-content {
+  position: relative; }
+
+/*
+ * blueimp Gallery Indicator CSS 1.1.0
+ * https://github.com/blueimp/Gallery
+ *
+ * Copyright 2013, Sebastian Tschan
+ * https://blueimp.net
+ *
+ * Licensed under the MIT license:
+ * http://www.opensource.org/licenses/MIT
+ */
+.blueimp-gallery > .indicator {
+  position: absolute;
+  top: auto;
+  right: 15px;
+  bottom: 15px;
+  left: 15px;
+  margin: 0 40px;
+  padding: 0;
+  list-style: none;
+  text-align: center;
+  line-height: 10px;
+  display: none; }
+
+.blueimp-gallery > .indicator > li {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  margin: 6px 3px 0 3px;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  border: 1px solid transparent;
+  background: #ccc;
+  background: rgba(255, 255, 255, 0.25) center no-repeat;
+  border-radius: 5px;
+  box-shadow: 0 0 2px #000;
+  opacity: 0.5;
+  cursor: pointer; }
+
+.blueimp-gallery > .indicator > li:hover,
+.blueimp-gallery > .indicator > .active {
+  background-color: #fff;
+  border-color: #fff;
+  opacity: 1; }
+
+.blueimp-gallery-controls > .indicator {
+  display: block;
+  /* Fix z-index issues (controls behind slide element) on Android: */
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0); }
+
+.blueimp-gallery-single > .indicator {
+  display: none; }
+
+.blueimp-gallery > .indicator {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
+/* IE7 fixes */
+* + html .blueimp-gallery > .indicator > li {
+  display: inline; }
+
+/*
+ * Bootstrap Image Gallery CSS 3.0.0
+ * https://github.com/blueimp/Bootstrap-Image-Gallery
+ *
+ * Copyright 2013, Sebastian Tschan
+ * https://blueimp.net
+ *
+ * Licensed under the MIT license:
+ * http://www.opensource.org/licenses/MIT
+ */
+.blueimp-gallery .modal-body {
+  position: relative;
+  text-align: center;
+  padding: 0 0 56.25% 0;
+  overflow: hidden;
+  cursor: pointer; }
+
+.blueimp-gallery .modal-footer {
+  margin: 0; }
+
+.blueimp-gallery .modal-body img,
+.blueimp-gallery .modal-body .video-content video,
+.blueimp-gallery .modal-body .video-content iframe,
+.blueimp-gallery .modal-body .video-content a {
+  max-width: 100%;
+  max-height: 100%;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0; }
+
+.blueimp-gallery .modal-body .video-content video {
+  display: none; }
+
+.blueimp-gallery .modal-body .video-playing video {
+  display: block; }
+
+.blueimp-gallery .modal-body .video-content iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  left: 100%; }
+
+.blueimp-gallery .modal-body .video-playing iframe {
+  left: 0; }
+
+.blueimp-gallery .modal-body .video-playing img,
+.blueimp-gallery .modal-body .video-playing a {
+  display: none; }
+
+.blueimp-gallery .modal-body .video-content a {
+  cursor: pointer; }
+
+.blueimp-gallery .modal-body .video-content a:after {
+  font-family: "Glyphicons Halflings";
+  -webkit-font-smoothing: antialiased;
+  content: "\e029";
+  font-size: 64px;
+  line-height: 64px;
+  width: 64px;
+  height: 64px;
+  position: absolute;
+  top: 50%;
+  margin: -32px 0 0 -32px; }
+
+.blueimp-gallery .modal-body .video-loading a {
+  background: url(../img/loading.gif) center no-repeat;
+  background-size: 64px 64px; }
+
+.blueimp-gallery .modal-body .video-loading a:after {
+  content: none; }
+
+@media screen and (min-width: 768px) {
+  .blueimp-gallery .modal-dialog {
+    right: auto;
+    left: auto;
+    width: auto;
+    max-width: 900px;
+    padding-left: 5%;
+    padding-right: 5%; } }
 .header {
   margin-bottom: 40px; }
 
@@ -9128,6 +9500,10 @@ Copyright (c) 2013 Daniel Eden
     display: block;
     padding: 40px;
     margin-left: 65px; }
+    @media (max-width: 767px) {
+      .logo-wrapper a img {
+        max-width: 180px;
+        margin: 0; } }
 
 .navbar {
   border: 0;
@@ -9140,25 +9516,81 @@ Copyright (c) 2013 Daniel Eden
 .navbar-collapse {
   padding: 0 10px; }
 
+.navbar-brand {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 42px;
+  padding: 10px;
+  text-transform: uppercase; }
+  @media (min-width: 768px) {
+    .navbar-brand {
+      display: none; } }
+
+.navbar-header {
+  border-bottom: 2px black solid;
+  margin-bottom: -2px; }
+
 .navbar-nav.nav > li > a {
-  border-bottom: 2px solid black;
   font-family: 'Josefin Sans', sans-serif;
   font-size: 14px;
   font-weight: 700;
   line-height: 1;
-  padding: 10px;
+  padding: 10px 15px;
   margin-bottom: -2px;
   text-transform: uppercase; }
+  @media (min-width: 768px) {
+    .navbar-nav.nav > li > a {
+      border-bottom: 2px solid black;
+      padding: 10px; } }
 .navbar-nav.nav > li:hover a, .navbar-nav.nav > li.active a {
   background: white;
   border-color: #eae0d7;
   color: #eae0d7; }
-.navbar-nav.navbar-right {
-  margin: 0; }
+@media (min-width: 768px) {
+  .navbar-nav.navbar-right {
+    margin: 0; } }
+
+.icon-bar {
+  background: black; }
+
+.navbar-toggle {
+  margin-right: 10px; }
+  .navbar-toggle .icon-bar {
+    background-color: #333333;
+    position: relative;
+    transition: all 150ms ease-in-out; }
+  .navbar-toggle .icon-bar:nth-of-type(2) {
+    top: 1px; }
+  .navbar-toggle .icon-bar:nth-of-type(3) {
+    top: 2px; }
+  .navbar-toggle .icon-bar:nth-child(2) {
+    top: 6px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg); }
+  .navbar-toggle .icon-bar:nth-child(3) {
+    background-color: transparent; }
+  .navbar-toggle .icon-bar:nth-child(4) {
+    top: -6px;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg); }
+  .navbar-toggle.collapsed .icon-bar:nth-child(2) {
+    top: 0;
+    transform: rotate(0);
+    -webkit-transform: rotate(0); }
+  .navbar-toggle.collapsed .icon-bar:nth-child(3) {
+    background-color: #333333;
+    top: 1px; }
+  .navbar-toggle.collapsed .icon-bar:nth-child(4) {
+    top: 2px;
+    transform: rotate(0);
+    -webkit-transform: rotate(0); }
 
 .page {
   margin-top: 40px;
   margin-bottom: 40px; }
+  .page *:first-child {
+    margin-top: 0; }
   .page *:last-child {
     margin-bottom: 0; }
 
@@ -9170,7 +9602,7 @@ Copyright (c) 2013 Daniel Eden
   border-top: black 2px solid;
   line-height: 1;
   padding: 10px;
-  text-align: right; }
+  text-align: center; }
   .footer-wrapper:before, .footer-wrapper:after {
     content: " ";
     display: table; }
@@ -9183,13 +9615,17 @@ Copyright (c) 2013 Daniel Eden
     font-weight: 700;
     padding: 10px;
     text-transform: uppercase; }
-  .footer-wrapper .address {
-    float: left; }
+  @media (min-width: 768px) {
+    .footer-wrapper .address {
+      float: left; } }
   .footer-wrapper .phone {
-    float: left;
     margin-left: -10px; }
-  .footer-wrapper .imprint {
-    float: right; }
+    @media (min-width: 768px) {
+      .footer-wrapper .phone {
+        float: left; } }
+  @media (min-width: 768px) {
+    .footer-wrapper .imprint {
+      float: right; } }
 
 .contact-form label {
   display: none; }
@@ -9210,6 +9646,7 @@ h1, h2, h3, h4 {
 
 h1 {
   font-family: 'Josefin Sans', sans-serif;
+  line-height: 1;
   font-size: 28px;
   font-weight: 700;
   text-transform: uppercase; }
@@ -9232,12 +9669,20 @@ h4 {
   font-weight: 700;
   text-transform: uppercase; }
 
+.row {
+  margin-bottom: 40px; }
+
+blockquote {
+  border-color: #eae0d7; }
+  blockquote p {
+    margin-bottom: 5px; }
+
 .lookbook-grid {
   margin-left: -15px;
   margin-right: -15px;
-  margin-left: -2.5px;
-  margin-right: -2.5px;
-  margin-bottom: -5px; }
+  margin-left: -1px;
+  margin-right: -1px;
+  margin-bottom: 40px; }
   .lookbook-grid:before, .lookbook-grid:after {
     content: " ";
     display: table; }
@@ -9259,9 +9704,9 @@ h4 {
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px;
-  padding-left: 2.5px;
-  padding-right: 2.5px;
-  margin-bottom: 5px; }
+  padding-left: 1px;
+  padding-right: 1px;
+  margin-bottom: 2px; }
   @media (min-width: 768px) {
     .lookbook-grid-item {
       float: left;
@@ -9272,6 +9717,37 @@ h4 {
       width: 16.66667%; } }
   .lookbook-grid-item a {
     display: block; }
+
+.blueimp-gallery {
+  background: white;
+  background: rgba(255, 255, 255, 0.96); }
+  .blueimp-gallery .slide img.slide-content {
+    max-height: 80% !important;
+    max-width: 80% !important; }
+  .blueimp-gallery .close {
+    color: black;
+    font-weight: bold;
+    text-shadow: none; }
+    .blueimp-gallery .close:hover {
+      color: black; }
+  .blueimp-gallery .next, .blueimp-gallery .prev {
+    background: none;
+    border: 0;
+    color: black;
+    text-shadow: none; }
+    .blueimp-gallery .next:hover, .blueimp-gallery .prev:hover {
+      color: black; }
+  .blueimp-gallery .indicator li {
+    box-shadow: none;
+    border-radius: 20px;
+    opacity: 0.4;
+    height: 14px;
+    width: 14px; }
+    .blueimp-gallery .indicator li.active {
+      border-color: #eae0d7;
+      opacity: 1;
+      height: 14px;
+      width: 14px; }
 
 .table-hours {
   width: 100%; }

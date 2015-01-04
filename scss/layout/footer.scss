@@ -9,7 +9,7 @@
   border-top: $black 2px solid;
   line-height: 1;
   padding: $space-small;
-  text-align: right;
+  text-align: center;
 
   a {
     display: inline-block;
@@ -21,14 +21,21 @@
   }
 
   .address {
-    float: left;
+    @media (min-width: $screen-sm-min) {
+      float: left;
+    }
   }
   .phone {
-    float: left;
     margin-left: -$space-small;
+
+    @media (min-width: $screen-sm-min) {
+      float: left;
+    }
   }
 
   .imprint {
-    float: right;
+    @media (min-width: $screen-sm-min) {
+      float: right;
+    }
   }
 }
