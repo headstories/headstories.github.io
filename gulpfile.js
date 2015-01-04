@@ -8,7 +8,8 @@ var gulp = require('gulp'),
     minifyCSS = require('gulp-minify-css'),
     rename = require('gulp-rename'),
     fileinclude = require('gulp-file-include'),
-    plumber = require('gulp-plumber');
+    plumber = require('gulp-plumber'),
+    imageResize = require('gulp-image-resize');
 
 
 // ------------------------------------------
@@ -20,7 +21,8 @@ var paths = {
   images: 'img/**/*',
   fonts: 'fonts/**/*',
   sass: "scss/**/*.scss",
-  html: "content/**/*.html",
+  html: ["content/**/*.html"],
+  watch_html: ["content/**/*.html", "templates/**/*.html"],
   public_dist: "dist/**/*.*"
 };
 
@@ -31,9 +33,9 @@ var paths = {
 // Retrun the task when a file changes
 gulp.task('watch', function () {
   gulp.watch(paths.scripts, ['scripts']);
-  gulp.watch(paths.images, ['images']);
+  gulp.watch(paths.images, ['images', 'lookbook_imagaes']);
   gulp.watch(paths.sass, ['sass']);
-  gulp.watch(paths.html, ['html_dev', "html_prod"]);
+  gulp.watch(paths.watch_html, ['html_dev', "html_prod"]);
   gulp.watch(paths.public_dist, ['public_dist']);
 });
 
@@ -42,7 +44,7 @@ gulp.task('watch', function () {
 // copy index to /public for developing with pow
 gulp.task('html_dev', function () {
   gulp.src(paths.html)
-    .pipe(cleanhtml())
+    // .pipe(cleanhtml())
     .pipe(fileinclude({
       prefix: '@@',
       basepath: "./"
@@ -51,7 +53,7 @@ gulp.task('html_dev', function () {
 });
 gulp.task('html_prod', function () {
   gulp.src(paths.html)
-    .pipe(cleanhtml())
+    // .pipe(cleanhtml())
     .pipe(fileinclude({
       prefix: '@@',
       basepath: "./"
@@ -88,6 +90,7 @@ gulp.task('scripts', function() {
             './bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/scrollspy.js',
             './bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/tab.js',
             './bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/affix.js',
+            './bower_components/jquery-instagram/dist/instagram.js',
             "./javascripts/headstories.js"
             ])
     .pipe(plumber())
@@ -118,8 +121,32 @@ gulp.task('public_dist', function () {
     .pipe(gulp.dest('./public/dist'));
 });
 
+
+// crop images
+gulp.task('lookbook_imagaes', function () {
+  gulp.src("./img/lookbook/**/*.{jpg,png}")
+  .pipe(imageResize({
+    width : 185,
+    height : 185,
+    crop : true,
+    upscale : true
+  }))
+  .pipe(rename(function (path) { path.basename += "-thumb"; }))
+  .pipe(gulp.dest('./dist/img/lookbook/'));
+  // 2x
+  gulp.src("./img/lookbook/**/*.{jpg,png}")
+  .pipe(imageResize({
+    width : 185,
+    height : 185,
+    crop : true,
+    upscale : true
+  }))
+  .pipe(rename(function (path) { path.basename += "-thumb2x"; }))
+  .pipe(gulp.dest('./dist/img/lookbook/'));
+});
+
 // ------------------------------------------
 
 
 // The default task (called when you run `gulp` from cli)
-gulp.task('default', ['sass', 'images','fonts', 'html_dev', 'html_prod', 'public_dist', 'scripts', 'watch']);
+gulp.task('default', ['sass', 'images','fonts', 'html_dev', 'html_prod', 'public_dist', 'scripts', 'lookbook_imagaes', 'watch']);

@@ -10,11 +10,12 @@
     "momentjs": "latest",
     "headroom.js": "latest",
     "modernizr": "2.8.0",
-    "animate-sass": "latest",
+    "animate.css": "latest",
     "blueimp-bootstrap-image-gallery": "latest",
     "demography": "0.0.6",
     "masonry": "3.1.5",
-    "sharpness": "latest"
+    "sharpness": "latest",
+    "jquery-instagram": "latest"
   },
   "authors": [
     "(Andre Zimpel <andrezimpel@me.com>)"

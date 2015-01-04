@@ -1,0 +1,8 @@
+.page {
+  margin-top: $space;
+  margin-bottom: $space;
+
+  *:last-child {
+    margin-bottom: 0;
+  }
+}

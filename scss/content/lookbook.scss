@@ -1,0 +1,25 @@
+.lookbook-grid {
+  @include make-row;
+
+  margin-left: -$space-tiny;
+  margin-right: -$space-tiny;
+  margin-bottom: -$space-mini;
+}
+
+.lookbook-grid-item {
+  @include make-xs-column(6);
+  @include make-sm-column(2);
+  @include make-md-column(2);
+
+  padding-left: $space-tiny;
+  padding-right: $space-tiny;
+  margin-bottom: $space-mini;
+
+  a {
+    display: block;
+  }
+
+  img {
+    @extend .img-responsive;
+  }
+}
