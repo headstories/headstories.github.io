@@ -13615,78 +13615,185 @@ function swap_hires_image(element, hires_src, src) {
 
 }(jQuery);
 
+/*! jQuery Instagram - v0.3.1 - 2014-06-19
+* http://potomak.github.com/jquery-instagram
+* Copyright (c) 2014 Giovanni Cappellotto; Licensed MIT */
+(function($) {
+
+  function composeRequest(options) {
+    var url = 'https://api.instagram.com/v1';
+    var data = {};
+
+    if (options.accessToken == null && options.clientId == null) {
+      throw 'You must provide an access token or a client id';
+    }
+
+    data = $.extend(data, {
+      access_token: options.accessToken || '',
+      client_id: options.clientId || '',
+      count: options.count || ''
+    });
+
+    if (options.url != null) {
+      url = options.url;
+    }
+    else if (options.hash != null) {
+      url += '/tags/' + options.hash + '/media/recent';
+    }
+    else if (options.search != null) {
+      url += '/media/search';
+      data = $.extend(data, options.search);
+    }
+    else if (options.userId != null) {
+      if (options.accessToken == null) {
+        throw 'You must provide an access token';
+      }
+      url += '/users/' + options.userId + '/media/recent';
+    }
+    else if (options.location != null) {
+      url += '/locations/' + options.location.id + '/media/recent';
+      delete options.location.id;
+      data = $.extend(data, options.location);
+    }
+    else {
+      url += '/media/popular';
+    }
+    
+    return {url: url, data: data};
+  }
+
+  $.fn.instagram = function(options) {
+    var that = this;
+    options = $.extend({}, $.fn.instagram.defaults, options);
+    var request = composeRequest(options);
+
+    $.ajax({
+      dataType: "jsonp",
+      url: request.url,
+      data: request.data,
+      success: function(response) {
+        that.trigger('didLoadInstagram', response);
+      }
+    });
+
+    this.trigger('willLoadInstagram', options);
+    
+    return this;
+  };
+
+  $.fn.instagram.defaults = {
+    accessToken: null,
+    clientId: null,
+    count: null,
+    url: null,
+    hash: null,
+    userId: null,
+    location: null,
+    search: null
+  };
+
+}(jQuery));
+
+// retina images
+
 $(document).ready(function(){
-  $('[data-hires]').sharpness({
-    browsers: ['msie8', 'msie9']
-  });
+  $("[data-hires]").sharpness();
+});
+
+//-------------
+
+// lookbook animations
+
+$(document).ready(function(){
+  $('.lookbook-grid-item').css("display", "none");
 });
 
 $(window).load(function(){
-
-  window.delay = 370;
-
-  if ($("body").hasClass("home")) {
-    setTimeout(start_animation, 500);
-  }
-
-  $("#replay").click(replay);
+  $('.lookbook-grid-item').css("display", "block");
+  $('.lookbook-grid-item').addClass('animated fadeIn');
 });
 
-function start_animation() {
-  container = $("#welcome");
-  item = container.find(".item:first-child");
 
-  container.removeClass("faded");
-
-  next_slide(false, container);
-}
-
-function next_slide(element, container) {
-  $items = container.find(".item");
-  var delay = window.delay;
-
-  if (element == false) {
-    $new_element = $items.first();
-  } else {
-    $new_element = element.next();
-  }
-
-  if($new_element.hasClass("item-final")) {
-    $items.removeClass("active");
-    prepare_fin(container);
-    return;
-  }
-
-  $items.removeClass("active");
-
-  $new_element.addClass("active");
-
-  // delay
-  if($new_element.data("delay") != undefined) {
-    delay = $new_element.data("delay");
-  }
-
-  setTimeout(function(){
-    next_slide($new_element, container);
-  }, delay);
-}
-
-function prepare_fin(container) {
-  $(".item-final").removeClass("hidden");
-  $("html").removeClass("animation-on-going");
-
-  setTimeout(function(){
-    $(".item-final").addClass("active-final");
-    $(".footer").removeClass("faded");
-  }, 1200);
-}
+//-------------
 
 
-function replay() {
-  setTimeout(function(){
-    $(".item-final").removeClass("active-final");
-    $(".footer").addClass("faded");
-  }, 1000);
+// load instagram images
+// $(document).ready(function(){
+//   $('.instagram').on('willLoadInstagram', function(event, options) {
+//     console.log(options);
+//   });
+//   $('.instagram').on('didLoadInstagram', function(event, response) {
+//     console.log(response);
+//   });
+//   $('.instagram').instagram({
+//     userId: 1600662282,
+//     // hash: 'love',
+//     clientId: '9651c5b41b724e4c9f6fdb6625d11dcb'
+//   });
+// });
 
-  start_animation();
-}
+
+// contact form
+
+
+$(document).ready(function(){
+  $form = $("#contact_form");
+
+  $form.submit(function(){
+    pre_name = "andre";
+    sur_name = "zimpel";
+    email = "andrezimpel@me.com";
+    message = "hihi :)";
+
+    email_content = "Name: " + pre_name + " " + sur_name + "<br>" + "Email: " + email + "<br>" + "Nachricht:<br>" + message;
+
+    $.ajax({
+      type: "POST",
+      url: "https://mandrillapp.com/api/1.0/messages/send.json",
+      data: {
+        "key": 'VO84ZJ2jRI3oIScUyssW0g',
+        "message": {
+          "from_email": "website@headstories.de",
+          "to": [{
+                "email": "hello@headstories.de",
+                "name": "head stories",
+                "type": "to"
+              }
+        ],
+        "autotext": true,
+        "subject": "Neue Nachricht",
+        "html": email_content
+        }
+      }
+    }).done(function(response) {
+      console.log(response); // if you're into that sorta thing
+    });
+    return false;
+  });
+});
+
+
+//-------------
+
+// active links
+
+$(document).ready(function(){
+  $(".navbar-nav a, .sidebar-navigation a").each(function(){
+    $this = $(this);
+    activable = $this.data("active");
+
+    if (activable != false) {
+      href = $this.attr("href");
+      target_url = window.location.protocol + "//" + window.location.host + href;
+      current_url = document.URL;
+
+      if (current_url == target_url) {
+        $this.toggleClass("active");
+        $this.parent().toggleClass("active");
+      }
+    }
+  });
+});
+
+
+//-------------

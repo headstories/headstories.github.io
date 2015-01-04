@@ -1,0 +1,34 @@
+.footer {
+  color: $black;
+  margin-top: $space;
+}
+
+.footer-wrapper {
+  @include clearfix;
+
+  border-top: $black 2px solid;
+  line-height: 1;
+  padding: $space-small;
+  text-align: right;
+
+  a {
+    display: inline-block;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    padding: $space-small;
+    text-transform: uppercase;
+  }
+
+  .address {
+    float: left;
+  }
+  .phone {
+    float: left;
+    margin-left: -$space-small;
+  }
+
+  .imprint {
+    float: right;
+  }
+}

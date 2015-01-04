@@ -1,20 +1,27 @@
-$font-size-base: 20px;
-$black: rgba(black, 1);
-$link-color: $black;
-
-$space: 40px;
-$space-large: $space * 2;
-$space-medium: $space / 2;
-$space-small: $space / 4;
-$space-mini: $space / 8;
-$space-tiny: $space / 16;
-
-$fa-font-path:        "//netdna.bootstrapcdn.com/font-awesome/4.1.0/fonts";
+@import "_variables";
 
 @import "../bower_components/bootstrap-sass-official/assets/stylesheets/_bootstrap";
 @import "../bower_components/font-awesome/scss/font-awesome";
+@import "../bower_components/animate.css/animate";
+
 //@import url("http://fonts.googleapis.com/css?family=Lato:400,700");
 
+// layout
+@import "layout/header";
+@import "layout/navbar";
+@import "layout/page";
+@import "layout/footer";
+@import "layout/forms";
+@import "layout/html";
+
+// content
+@import "content/home";
+@import "content/lookbook";
+@import "content/contact";
+@import "content/services";
+
+
+// fonts
 @font-face {
   font-family: 'headstories';
   src: url('/dist/fonts/headstories/headstories-regular-webfont.eot');
@@ -26,286 +33,23 @@ $fa-font-path:        "//netdna.bootstrapcdn.com/font-awesome/4.1.0/fonts";
   font-weight: normal;
   font-style: normal;
 }
+@import url("http://fonts.googleapis.com/css?family=Josefin+Sans:600,700");
 
 
 html, body {
   font-family: 'headstories', sans-serif;
   color: $black;
-  cursor: default;
-  text-align: center;
+  // cursor: default;
 
-  -webkit-user-select: none;  /* Chrome all / Safari all */
-  -moz-user-select: none;     /* Firefox all */
-  -ms-user-select: none;      /* IE 10+ */
-
-  /* No support for these yet, use at own risk */
-  -o-user-select: none;
-  user-select: none;
+  // -webkit-user-select: none;  /* Chrome all / Safari all */
+  // -moz-user-select: none;     /* Firefox all */
+  // -ms-user-select: none;      /* IE 10+ */
+  //
+  // /* No support for these yet, use at own risk */
+  // -o-user-select: none;
+  // user-select: none;
 }
 
-.home {
-  @media (min-width: $screen-sm-min) {
-    height: 100%;
-    overflow: hidden;
-    width: 100%;
-  }
-
-  body {
-    @media (min-width: $screen-sm-min) {
-      height: 100%;
-      overflow: hidden;
-      width: 100%;
-    }
-  }
-}
-
-.animation-on-going.home {
-  height: 100%;
-  overflow: hidden;
-  width: 100%;
-
-  body {
-    height: 100%;
-    overflow: hidden;
-    width: 100%;
-
-    .page {
-      display: table;
-      height: 100%;
-      width: 100%;
-
-      .welcome {
-        display: table-cell;
-      }
-    }
-  }
-}
-
-hr {
-  border-color: black;
-  max-width: 560px;
-
-  @media (max-width: $screen-xs-max) {
-    max-width: 85%;
-    margin: ($space + $space-medium) auto;
-  }
-}
-
-.selectable {
-  -webkit-user-select: text;  /* Chrome all / Safari all */
-  -moz-user-select: text;     /* Firefox all */
-  -ms-user-select: text;      /* IE 10+ */
-
-  /* No support for these yet, use at own risk */
-  -o-user-select: text;
-  user-select: text;
-}
-
-
-.home .page {
-  @media (min-width: $screen-sm-min) {
-    display: table;
-    height: 100%;
-    width: 100%;
-  }
-}
-
-.welcome {
-  @include transition(1s opacity);
-
-  opacity: 1;
-  vertical-align: middle;
-  width: 100%;
-
-  @media (min-width: $screen-sm-min) {
-    display: table-cell;
-  }
-
-  &.faded {
-    opacity: 0;
-  }
-
-  .item {
-    display: none;
-    font-size: 50px;
-    text-align: center;
-    width: 100%;
-  }
-
-  .item.active {
-    display: block;
-    margin: auto;
-  }
-
-  .item-final {
-    @include transition(1.2s opacity);
-
-    display: block;
-    opacity: 0;
-    height: 0;
-    position: absolute;
-    visibility: hidden;
-  }
-  .item-final.active-final {
-    @include transition(1.2s opacity);
-
-    height: auto;
-    margin: auto;
-    opacity: 1;
-    position: relative;
-    visibility: visible;
-  }
-}
-
-.head-stories-logo {
-  margin-left: 65px;
-  max-width: 220px;
-
-  @media (min-width: $screen-sm-min) {
-    margin-left: 75px;
-    max-width: 320px;
-  }
-}
-
-
-
-
-.hero {
-  font-size: 29px;
-
-  @media (max-width: $screen-xs-max) {
-    font-size: 22px;
-  }
-
-  .head-stories-logo {
-    margin-bottom: $space-large + $space;
-    margin-top: $space;
-
-    @media (max-width: $screen-xs-max) {
-      margin-bottom: $space + $space-medium;
-    }
-
-    @media (min-width: $screen-sm-min) {
-      margin-top: -$space;
-    }
-  }
-
-  span, a {
-    margin-left: $space-medium;
-
-    @media (max-width: $screen-xs-max) {
-      display: block;
-      margin: 0;
-      text-align: center;
-      width: 100%;
-    }
-
-    &:first-child {
-      margin-left: 0;
-    }
-  }
-
-  a {
-    cursor: pointer;
-  }
-
-  @media (max-width: $screen-xs-max) {
-    p {
-      margin: 0;
-    }
-    .opening span {
-      display: inline-block;
-      width: auto;
-
-      &:last-child {
-        margin-left: $space-medium;
-      }
-    }
-    .booking-contact {
-      margin-bottom: $space;
-    }
-  }
-}
-
-
-
-
-
-
-
-.footer {
-  @extend .clearfix;
-  @include transition(1s opacity);
-
-  background: white;
-  font-size: 13px;
-  font-weight: bold;
-  opacity: 1;
-
-  @media (max-width: $screen-xs-max) {
-    margin-bottom: $space-small;
-  }
-
-  @media (min-width: $screen-sm-min) {
-    bottom: 0;
-    left: 0;
-    position: fixed;
-    right: 0;
-
-    hr {
-      display: none;
-    }
-  }
-
-  &.faded {
-    opacity: 0;
-  }
-
-  a, span {
-    padding: $space-small $space-medium;
-  }
-}
-
-.adress {
-  float: left;
-}
-.imprint-link {
-  float: right;
-}
-@media (max-width: $screen-xs-max) {
-  .footer .imprint-link, .footer .adress {
-    float: none;
-    display: block;
-    text-align: center;
-    width: 100%;
-  }
-}
-
-
-
-
-
-.imprint {
-  .page {
-    max-width: 700px;
-    margin: auto;
-    margin-bottom: $space-large;
-  }
-  .welcome {
-    padding: 0 $space-large;
-    text-align: left;
-
-    h1, h2, h3, h4, p {
-      max-width: 700px;
-      margin: $space auto;
-    }
-
-    h1 {
-      small {
-        display: block;
-        font-size: 12px;
-        margin-top: 10px;
-      }
-    }
-  }
+p, form {
+  margin-bottom: $space;
 }
