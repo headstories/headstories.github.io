@@ -1,6 +1,15 @@
 .table-hours {
   width: 100%;
 
+  td:nth-child(3) {
+    text-align: center;
+    width: 50px;
+
+    @media (min-width: $screen-sm-min) {
+      width: 100px;
+    }
+  }
+
   .hours-highlight {
     font-weight: 700;
   }

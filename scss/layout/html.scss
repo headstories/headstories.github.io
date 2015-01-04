@@ -1,4 +1,5 @@
 h1, h2, h3, h4 {
+  margin-top: $space-medium;
   margin-bottom: $space-medium;
 }
 
@@ -40,7 +41,7 @@ h4 {
 
 blockquote {
   border-color: $brand-primary;
-  
+
   p {
     margin-bottom: $space-mini;
   }
