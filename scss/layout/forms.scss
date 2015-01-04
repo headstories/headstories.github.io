@@ -1,0 +1,19 @@
+.contact-form {
+  label {
+    display: none;
+  }
+}
+
+input.form-control {
+  border: 0;
+  border-bottom: 1px solid $black;
+  border-radius: 0;
+  box-shadow: none !important;
+}
+
+
+textarea.form-control {
+  border: 1px solid $black;
+  border-radius: 0;
+  box-shadow: none !important;
+}
