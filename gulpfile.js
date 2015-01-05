@@ -147,6 +147,28 @@ gulp.task('lookbook_images', function () {
   }))
   .pipe(rename(function (path) { path.basename += "-thumb2x"; }))
   .pipe(gulp.dest('./dist/img/lookbook/'));
+
+
+  // modal
+  gulp.src("./img/lookbook/**/*.{jpg,png}")
+  .pipe(imageResize({
+    width : 900,
+    height : 900,
+    crop : false,
+    upscale : true
+  }))
+  .pipe(rename(function (path) { path.basename += "-module"; }))
+  .pipe(gulp.dest('./dist/img/lookbook/'));
+  // 2x
+  gulp.src("./img/lookbook/**/*.{jpg,png}")
+  .pipe(imageResize({
+    width : 1800,
+    height : 1800,
+    crop : false,
+    upscale : true
+  }))
+  .pipe(rename(function (path) { path.basename += "-module2x"; }))
+  .pipe(gulp.dest('./dist/img/lookbook/'));
 });
 
 // ------------------------------------------
