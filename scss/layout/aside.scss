@@ -3,6 +3,10 @@
   padding: $space-medium;
 
   &:last-child {
+    border-bottom: 2px solid $black !importantpim;
+  }
+
+  &:last-child {
     border-bottom: none;
   }
 }
