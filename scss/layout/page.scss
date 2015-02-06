@@ -12,3 +12,18 @@
     }
   }
 }
+
+
+.page-row {
+  @extend .row;
+}
+.page-content {
+  @include make-sm-column(9);
+
+  img {
+    max-width: 100%;
+  }
+}
+.page-aside {
+  @include make-sm-column(3);
+}
