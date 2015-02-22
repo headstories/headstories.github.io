@@ -2,8 +2,9 @@
   border-bottom: 2px solid $black;
   padding: $space-medium;
 
-  &:last-child {
-    border-bottom: 2px solid $black !importantpim;
+  &:first-child {
+    border-bottom: 2px solid $black !important;
+    padding-top: 0;
   }
 
   &:last-child {
@@ -16,7 +17,22 @@
   ul {
     line-height: 30px;
     list-style: none;
-    margin: 0;
+    margin: 0 (-$space-medium);
     padding: 0;
+
+    li.active a,
+    li a:hover {
+      color: $brand-primary;
+      text-decoration: none;
+    }
+    li.active a:hover {
+      cursor: default;
+    }
+
+    a {
+      display: block;
+      padding: $space-tiny $space-medium;
+      text-transform: lowercase;
+    }
   }
 }

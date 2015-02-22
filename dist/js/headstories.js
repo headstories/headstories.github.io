@@ -11287,73 +11287,197 @@ $(document).ready(function(){
 
     // Establish our default settings
     var settings = $.extend({
-      browsers: null,
-      attribute: 'data-hires',
+      sizes: null,
+      lazy: false,
+      hires: false,
+      hires_alias: "2x",
       start: null,
       complete: null
     }, options);
 
-    return this.each( function() {
-      // start everthing
-      if ( $.isFunction( settings.start ) ) {
-        settings.start.call( this );
-      }
+    return handle_images();
 
-      if (settings.browsers === null) {
-        prepare_swap($(this), settings);
-      } else {
-        // check if we got everything
-        if (typeof bowser === 'undefined') {
-          console.log("you need to include bowser https://github.com/ded/bowser");
-        } else if(typeof window.bodyclasses === 'undefined') {
-          console.log("you need to include demography https://github.com/andrezimpel/demography");
-        } else {
-          match = false;
-          classversion = window.bodyclasses.split(" ");
+    function handle_images() {
+      current_key = get_current_size_key(settings.sizes);
+      density = detect_display_densitiy();
 
-          $(classversion).each(function(index){
-            brws_class = classversion[index];
-            result = jQuery.inArray( brws_class, settings.browsers );
-            if (result !== -1) {
-              match = true;
-            }
-          });
+      $("img").each(function(){
+        prepare_image_swap(this, current_key, density, settings);
+      });
 
-          if (!match) {
-            prepare_swap($(this), settings);
-          }
-        }
-      }
+      window.onresize = function(){
+        current_key = get_current_size_key(settings.sizes);
 
-      // set the callback
-      if ( $.isFunction( settings.complete ) ) {
-        settings.complete.call( this );
-      }
-    });
+        $("img").each(function(){
+          prepare_image_swap(this, current_key, density, settings);
+        });
+      };
+    }
   }
 }(jQuery));
 
-// function
-function prepare_swap(elem, settings) {
-  $this = elem;
-  var hires_src = $this.attr(settings.attribute);
-  var src = $this.attr("src");
-  var img = $this;
 
-  var img_call = $.ajax(hires_src)
-  .success(function() {
 
-    // swap image if the hires alternative is available
-    swap_hires_image(img, hires_src, src);
-  });
+
+
+
+
+
+
+
+
+
+
+// detect dispaly densitiy
+function detect_display_densitiy() {
+  density = window.devicePixelRatio;
+  window.density = density;
+
+  return density;
+}
+
+// detect current image size
+function get_current_size_key(sizes) {
+  if (sizes != null) {
+    current_screen_width = $(window).outerWidth(true);
+    current_key = null;
+
+    $.each(sizes, function(key, value) {
+      if (current_screen_width >= value) {
+        current_key = key;
+      }
+    });
+    return current_key;
+  }
+  return null;
 }
 
 // replace images
-function swap_hires_image(element, hires_src, src) {
-  $(element).attr("src", null);
-  $(element).attr("src", hires_src);
-  $(element).attr("data-original-src", src);
+function prepare_image_swap(image, key, density, settings) {
+  $image = $(image);
+
+  if (key == null) {
+    // if hires
+    if (settings.hires) {
+      attribute = "data-" + settings.hires_alias + "-image";
+    }
+  } else {
+    attribute = "data-" + key + "-image";
+
+    // if hires
+    if (settings.hires) {
+      attribute = "data-" + key + "-" + settings.hires_alias + "-image";
+    }
+  }
+
+  // console.log(attribute);
+
+  attribute_value = $image.attr(attribute);
+
+  if(image_has_attribute(image, attribute)) {
+    swap_image($image, attribute_value);
+  }
 }
+function swap_image(image, attribute) {
+  var img_call = $.ajax(attribute)
+  .success(function() {
+    if(!image_has_attribute(image, "data-original-image-src")) {
+      image.attr("data-original-image-src", image.attr("src"));
+    }
+
+    image.attr("src", attribute);
+  });
+}
+
+
+
+
+// helper
+function image_has_attribute(image, attribute) {
+
+  $image = $(image);
+  image_attr = $image.attr(attribute);
+
+  if(typeof image_attr !== typeof undefined && image_attr !== false) {
+    return true;
+  }
+  return false;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
+//
+//
+// var doit;
+// window.onresize = function(){
+//   clearTimeout(doit);
+//   doit = setTimeout(function(){
+//     $(window).trigger("afterResize");
+//   }, 100);
+// };
+//
+//
+//
+//
+
+
+
+
+
+
+
+
+
+
+// start everthing
+// if ( $.isFunction( settings.start ) ) {
+//   settings.start.call( this );
+// }
+
+// if (settings.browsers === null) {
+//   prepare_swap($(this), settings);
+// } else {
+//   // check if we got everything
+//   if (typeof bowser === 'undefined') {
+//     console.log("you need to include bowser https://github.com/ded/bowser");
+//   } else if(settings.browsers != null) {
+//     if(typeof window.bodyclasses === 'undefined'){
+//       console.log("you need to include demography https://github.com/andrezimpel/demography");
+//     }
+//   } else {
+//     match = false;
+//     classversion = window.bodyclasses.split(" ");
+//
+//     $(classversion).each(function(index){
+//       brws_class = classversion[index];
+//       result = jQuery.inArray( brws_class, settings.browsers );
+//       if (result !== -1) {
+//         match = true;
+//       }
+//     });
+//
+//     if (!match) {
+//       prepare_swap($(this), settings);
+//     }
+//   }
+// }
+// set the callback
+// if ( $.isFunction( settings.complete ) ) {
+//   settings.complete.call( this );
+// }
 
 /* ========================================================================
  * Bootstrap: transition.js v3.3.0
@@ -15364,10 +15488,132 @@ function swap_hires_image(element, hires_src, src) {
 
 }(jQuery));
 
+jQuery(document).ready(function () {
+  if ($("#map").length > 0) {
+    var map;
+    var centerPosition = new google.maps.LatLng(50.829906,12.903351);
+
+    var style = [
+      {
+        "featureType": "landscape.man_made",
+          "stylers": [{
+              "visibility": "on"
+          }, {
+              "color": "#f0e9e2"
+          }]
+      }
+    ]
+
+    // var style = [{
+    //     "stylers": [{
+    //         "visibility": "off"
+    //     }]
+    // }, {
+    //     "featureType": "road",
+    //         "stylers": [{
+    //         "visibility": "on"
+    //     }, {
+    //         "color": "#ffffff"
+    //     }]
+    // }, {
+    //     "featureType": "road.arterial",
+    //         "stylers": [{
+    //         "visibility": "on"
+    //     }, {
+    //         "color": "#E4E4E5"
+    //     }]
+    // }, {
+    //     "featureType": "road.highway",
+    //         "stylers": [{
+    //         "visibility": "on"
+    //     }, {
+    //         "color": "#E4E4E5"
+    //     }]
+    // }, {
+    //     "featureType": "landscape",
+    //         "stylers": [{
+    //         "visibility": "on"
+    //     }, {
+    //         "color": "#F7F6F5"
+    //     }]
+    // }, {
+    //     "featureType": "water",
+    //         "stylers": [{
+    //         "visibility": "on"
+    //     }, {
+    //         "color": "#7fc8ed"
+    //     }]
+    // }, {}, {
+    //     "featureType": "road",
+    //         "elementType": "labels",
+    //         "stylers": [{
+    //         "visibility": "off"
+    //     }]
+    // }, {
+    //     "featureType": "poi.park",
+    //         "elementType": "geometry.fill",
+    //         "stylers": [{
+    //         "visibility": "on"
+    //     }, {
+    //         "color": "#A6CE39"
+    //     }]
+    // }, {
+    //     "elementType": "labels",
+    //         "stylers": [{
+    //         "visibility": "on"
+    //     }]
+    // }, {
+    //     "featureType": "landscape.man_made",
+    //         "elementType": "geometry",
+    //         "stylers": [{
+    //         "weight": 0.9
+    //     }, {
+    //         "visibility": "off"
+    //     }]
+    // }]
+
+    var options = {
+        zoom: 16,
+        center: centerPosition,
+        scrollwheel: false,
+        mapTypeControl: true,
+        streetViewControl: true,
+        panControl: false,
+        zoomControl: true,
+        zoomControlOptions: {
+            style: google.maps.ZoomControlStyle.SMALL
+        },
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    map = new google.maps.Map($('#map')[0], options);
+    map.setOptions({
+        styles: style
+    });
+
+    var marker = new google.maps.Marker({
+        position: centerPosition,
+        map: map
+    });
+  }
+});
+
 // retina images
 
 $(document).ready(function(){
-  $("[data-hires]").sharpness();
+  $("img").sharpness({
+    sizes: {
+     xs: 0,
+     sm: 768,
+     md: 992,
+     lg: 1200
+    },
+    hires: true
+  });
+
+  $("[data-hires]").sharpness({
+    hires_alias: "hires",
+    hires: true
+  });
 });
 
 //-------------
@@ -15448,19 +15694,36 @@ $(document).ready(function(){
 // active links
 
 $(document).ready(function(){
-  $(".navbar-nav a, .sidebar-navigation a").each(function(){
+  $(".navbar-nav a, .subnavigation a").each(function(){
     $this = $(this);
     activable = $this.data("active");
 
     if (activable != false) {
       href = $this.attr("href");
+      base_url = window.location.protocol + "//" + window.location.host + "/";
       target_url = window.location.protocol + "//" + window.location.host + href;
       current_url = document.URL;
 
+      // mark actual item
       if (current_url == target_url) {
         $this.toggleClass("active");
         $this.parent().toggleClass("active");
       }
+
+      // mark navbar items as well
+      possbile_navbar_anchor = document.URL.replace(base_url, "");
+      possbile_navbar_anchor = possbile_navbar_anchor.split("/");
+      possbile_navbar_anchor_href = base_url + possbile_navbar_anchor[0] + ".html";
+
+      $(".navbar-nav a").each(function(){
+        var href = $(this).attr("href");
+        var target_url = window.location.protocol + "//" + window.location.host + href;
+
+        if (possbile_navbar_anchor_href == target_url) {
+          $(this).addClass("active");
+          $(this).parent().addClass("active");
+        }
+      });
     }
   });
 });

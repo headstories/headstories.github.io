@@ -17,7 +17,7 @@ var gulp = require('gulp'),
 
 // paths
 var paths = {
-  scripts: ['javascripts/**/*.js'],
+  scripts: ['javascripts/**/*.js', 'bower_components/**/*.js'],
   images: 'img/**/*',
   fonts: 'fonts/**/*',
   sass: "scss/**/*.scss",
@@ -95,7 +95,8 @@ gulp.task('scripts', function() {
             './bower_components/blueimp-gallery/js/jquery.blueimp-gallery.js',
             './bower_components/blueimp-bootstrap-image-gallery/js/bootstrap-image-gallery.js',
             './bower_components/jquery-instagram/dist/instagram.js',
-            "./javascripts/headstories.js"
+            './javascripts/map.js',
+            './javascripts/headstories.js'
             ])
     .pipe(plumber())
     .pipe(concat('headstories.js'))

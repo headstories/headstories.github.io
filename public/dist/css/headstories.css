@@ -9605,6 +9605,8 @@ body:last-child .blueimp-gallery-playing > .play-pause {
     .page-content {
       float: left;
       width: 75%; } }
+  .page-content > h1:first-child {
+    margin-top: 10px; }
   .page-content img {
     max-width: 100%; }
 
@@ -9705,16 +9707,27 @@ blockquote {
 .aside-box {
   border-bottom: 2px solid black;
   padding: 20px; }
-  .aside-box:last-child {
-    border-bottom: 2px solid black !important pim; }
+  .aside-box:first-child {
+    border-bottom: 2px solid black !important;
+    padding-top: 0; }
   .aside-box:last-child {
     border-bottom: none; }
 
 .subnavigation ul {
   line-height: 30px;
   list-style: none;
-  margin: 0;
+  margin: 0 -20px;
   padding: 0; }
+  .subnavigation ul li.active a,
+  .subnavigation ul li a:hover {
+    color: #eae0d7;
+    text-decoration: none; }
+  .subnavigation ul li.active a:hover {
+    cursor: default; }
+  .subnavigation ul a {
+    display: block;
+    padding: 2.5px 20px;
+    text-transform: lowercase; }
 
 .fb-like {
   display: inline-block !important;

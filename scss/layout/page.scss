@@ -20,6 +20,10 @@
 .page-content {
   @include make-sm-column(9);
 
+  > h1:first-child {
+    margin-top: $space-small;
+  }
+
   img {
     max-width: 100%;
   }

@@ -1,7 +1,20 @@
 // retina images
 
 $(document).ready(function(){
-  $("[data-hires]").sharpness();
+  $("img").sharpness({
+    sizes: {
+     xs: 0,
+     sm: 768,
+     md: 992,
+     lg: 1200
+    },
+    hires: true
+  });
+
+  $("[data-hires]").sharpness({
+    hires_alias: "hires",
+    hires: true
+  });
 });
 
 //-------------
@@ -82,19 +95,36 @@ $(document).ready(function(){
 // active links
 
 $(document).ready(function(){
-  $(".navbar-nav a, .sidebar-navigation a").each(function(){
+  $(".navbar-nav a, .subnavigation a").each(function(){
     $this = $(this);
     activable = $this.data("active");
 
     if (activable != false) {
       href = $this.attr("href");
+      base_url = window.location.protocol + "//" + window.location.host + "/";
       target_url = window.location.protocol + "//" + window.location.host + href;
       current_url = document.URL;
 
+      // mark actual item
       if (current_url == target_url) {
         $this.toggleClass("active");
         $this.parent().toggleClass("active");
       }
+
+      // mark navbar items as well
+      possbile_navbar_anchor = document.URL.replace(base_url, "");
+      possbile_navbar_anchor = possbile_navbar_anchor.split("/");
+      possbile_navbar_anchor_href = base_url + possbile_navbar_anchor[0] + ".html";
+
+      $(".navbar-nav a").each(function(){
+        var href = $(this).attr("href");
+        var target_url = window.location.protocol + "//" + window.location.host + href;
+
+        if (possbile_navbar_anchor_href == target_url) {
+          $(this).addClass("active");
+          $(this).parent().addClass("active");
+        }
+      });
     }
   });
 });
