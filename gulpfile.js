@@ -266,7 +266,8 @@ gulp.task('convert', function() {
       gulp.src('./views/layouts/' + file.frontMatter.layout + '.handlebars')
         .pipe(handlebars(data, options))
         .pipe(rename(file_dir + data.slug + '.html'))
-        .pipe(gulp.dest('./public/'));
+        .pipe(gulp.dest('./public/'))
+        .pipe(gulp.dest('./'));
     }))
 });
 
