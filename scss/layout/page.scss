@@ -1,6 +1,7 @@
 .page {
   margin-top: $space;
   margin-bottom: $space;
+  overflow: hidden;
 
   .page-wrapper {
     > *:first-child {
@@ -13,12 +14,41 @@
   }
 }
 
+// remove space between nav and subnav
+.has-subnavigation {
+  .page {
+    margin-top: 0;
+  }
+}
+
 
 .page-row {
-  @extend .row;
+  // @extend .row;
 }
+.page-aside {
+  @extend .clearfix;
+
+  margin-bottom: ($space - $space-small);
+  margin-top: $space-small;
+  padding-left: $space-medium;
+  padding-right: $space-medium;
+
+  @media (max-width: $screen-xs-max) {
+    padding-left: $space-small;
+    padding-right: $space-small;
+  }
+}
+.page-title {
+  float: left;
+  font-size: 26px;
+  line-height: 1;
+  margin: 0;
+  padding: 8px 0 6px 0;
+}
+
+
 .page-content {
-  @include make-sm-column(9);
+  @extend .clearfix;
 
   > h1:first-child {
     margin-top: $space-small;
@@ -28,6 +58,36 @@
     max-width: 100%;
   }
 }
-.page-aside {
-  @include make-sm-column(3);
+.page-content-left {
+  @include make-sm-column(6);
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: $screen-xs-max) {
+    padding-left: $space-small;
+    padding-right: $space-small;
+  }
+}
+.page-content-right {
+  @include make-sm-column(6);
+
+  @media (max-width: $screen-xs-max) {
+    padding-left: $space-small;
+    padding-right: $space-small;
+  }
+}
+.page-content-left,
+.page-content-right {
+  img {
+    max-width: 150%;
+    width: 600px;
+  }
+}
+
+.page-content-left {
+  @media (max-width: $screen-xs-max) {
+    margin-bottom: $space;
+  }
 }

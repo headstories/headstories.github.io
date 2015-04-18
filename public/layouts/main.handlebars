@@ -1,0 +1,28 @@
+{{> _head}}
+<body class="{{body_class}} has-subnavigation" data-language="{{locale}}">
+  {{> _header}}
+
+  <div class="page">
+    <div class="container">
+      <div class="page-wrapper">
+
+        <div class="page-row">
+          <aside class="page-aside">
+            {{{aside section}}}
+          </aside>
+
+          <div class="page-content">
+            <div class="page-content-left">
+              {{{body}}}
+            </div>
+            <div class="page-content-right">
+              <img src="{{img}}">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {{> _footer}}
+</body>

@@ -2,9 +2,10 @@ $font-size-base: 20px;
 $black: rgba(black, 1);
 $link-color: $black;
 
-$brand-primary: #eae0d7;
+$brand-primary: darken(#eae0d7, 5%);
 
-$space: 40px;
+$grid-gutter-width: 40px;
+$space: $grid-gutter-width;
 $space-large: $space * 2;
 $space-medium: $space / 2;
 $space-small: $space / 4;

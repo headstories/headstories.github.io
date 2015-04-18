@@ -1,0 +1,94 @@
+{{> _head}}
+
+<body class="{{body_class}}" data-language="{{locale}}">
+  {{> _header}}
+
+  <div class="page">
+    <div class="container">
+      <div class="page-wrapper">
+
+        <h4>backflip</h4>
+        <div class="lookbook-grid">
+          {{> _item gallery="backflip" img="1"}}
+          {{> _item gallery="backflip" img="2"}}
+          {{> _item gallery="backflip" img="3"}}
+          {{> _item gallery="backflip" img="4"}}
+          {{> _item gallery="backflip" img="5"}}
+          {{> _item gallery="backflip" img="6"}}
+        </div>
+
+        <h4>bavarian bride</h4>
+        <div class="lookbook-grid">
+          {{> _item gallery="bavarian-bride" img="1"}}
+          {{> _item gallery="bavarian-bride" img="2"}}
+          {{> _item gallery="bavarian-bride" img="3"}}
+          {{> _item gallery="bavarian-bride" img="4"}}
+          {{> _item gallery="bavarian-bride" img="5"}}
+          {{> _item gallery="bavarian-bride" img="6"}}
+          {{> _item gallery="bavarian-bride" img="7"}}
+          {{> _item gallery="bavarian-bride" img="8"}}
+          {{> _item gallery="bavarian-bride" img="9"}}
+          {{> _item gallery="bavarian-bride" img="10"}}
+          {{> _item gallery="bavarian-bride" img="11"}}
+          {{> _item gallery="bavarian-bride" img="12"}}
+          {{> _item gallery="bavarian-bride" img="13"}}
+          {{> _item gallery="bavarian-bride" img="14"}}
+          {{> _item gallery="bavarian-bride" img="15"}}
+        </div>
+
+        <h4>doll</h4>
+        <div class="lookbook-grid">
+          {{> _item gallery="doll" img="1"}}
+          {{> _item gallery="doll" img="2"}}
+        </div>
+
+        <h4>munich</h4>
+        <div class="lookbook-grid">
+          {{> _item gallery="munich" img="1"}}
+          {{> _item gallery="munich" img="2"}}
+          {{> _item gallery="munich" img="3"}}
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  {{> _footer}}
+
+  <!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
+  <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls" data-use-bootstrap-modal="false">
+    <!-- The container for the modal slides -->
+    <div class="slides"></div>
+    <!-- Controls for the borderless lightbox -->
+    <a class="prev">
+      <i class="fa fa-angle-left"></i>
+    </a>
+    <a class="next">
+      <i class="fa fa-angle-right"></i>
+    </a>
+    <a class="close">×</a>
+    <ol class="indicator"></ol>
+    <!-- The modal dialog, which will be used to wrap the lightbox content -->
+    <div class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" aria-hidden="true">×</button>
+            <h4 class="modal-title"></h4>
+          </div>
+          <div class="modal-body next"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default pull-left prev">
+              <i class="glyphicon glyphicon-chevron-left"></i>
+              Previous
+            </button>
+            <button type="button" class="btn btn-primary next">
+              Next
+              <i class="glyphicon glyphicon-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

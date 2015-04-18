@@ -11281,203 +11281,237 @@ $(document).ready(function(){
   }
 });
 
-(function($) {
+/* ========================================================================
+  * jquery srcset plugin srcset.js v0.0.1
+  * URL
+  * ========================================================================
+  * Copyright 2011-2015 Andre Zimpel, http://www.andrezimpel.com
+  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+  * ======================================================================== */
 
-  $.fn.sharpness = function( options ) {
 
-    // Establish our default settings
-    var settings = $.extend({
-      sizes: null,
-      lazy: false,
-      hires: false,
-      hires_alias: "2x",
-      start: null,
-      complete: null
-    }, options);
+  +function ($) {
+  'use strict';
 
-    return handle_images();
+  // srcset CLASS DEFINITION
+  // ======================
 
-    function handle_images() {
-      current_key = get_current_size_key(settings.sizes);
-      density = detect_display_densitiy();
+  var srcset = function (element, options) {
+    this.options        = options
+    this.$element       = $(element)
 
-      $("img").each(function(){
-        prepare_image_swap(this, current_key, density, settings);
-      });
+    this.init();
 
-      window.onresize = function(){
-        current_key = get_current_size_key(settings.sizes);
+    // shitty, allow resizing
+    var my_this = this;
+    $(window).resize(function(){
+      my_this.init();
+    });
+  }
 
-        $("img").each(function(){
-          prepare_image_swap(this, current_key, density, settings);
-        });
-      };
+  srcset.VERSION  = '0.0.1'
+
+  srcset.DEFAULTS = {
+    ajax: true
+  }
+
+  srcset.prototype.init = function () {
+    // display densitiy
+    var density = this.detect_display_densitiy();
+    var window_width = this.get_current_window_width();
+
+    // check if the image has the srcset attribute
+    if (this.$element.attr("srcset")) {
+      this.choose_image_and_apply_it();
     }
   }
-}(jQuery));
+
+  srcset.prototype.choose_image_and_apply_it = function () {
+    var that = this;
+    var $img = this.$element;
+    var srcset = this.$element.attr("srcset").trim();
+    var src_images = srcset.split(",");
+    var sets = [];
+
+    // prepare data for each set
+    $(src_images).each(function(){
+      var string = this.trim();
+      var set = string.split(" ");
+
+      // adjust the set to be cool
+      set = that.parse_set(set);
+
+      // push it into the sets
+      sets.push(set);
+    });
+
+    // filter sets to find the matching set
+    var matches = sets.filter(this.filter_sets);
+
+    // get last match since we have a convetion of sorting by width and resolution
+    var match = matches[0];
+
+    // if there is a match
+    if (match !== undefined) {
+      // swap image src
+      this.prepare_swap_src_with_match(match);
+    } else {
+
+      // use original image
+      var original_src = $img.attr("data-original-src");
+
+      if (original_src !== undefined) {
+        this.swap_src_with_match($img, original_src);
+      }
+    }
+  }
+
+  srcset.prototype.filter_sets = function (set) {
+    var density = false;
+    var width = false;
+
+    // set data
+    var set_density = parseInt(set[2]);
+    var set_width = parseInt(set[1]);
+
+    // check for display density
+    if (window.density == set_density) {
+      density = true;
+    }
+
+    // check for size
+    if (window.width <= set_width) {
+      width = true;
+    }
+
+    // match the set
+    if (density === true && width === true) {
+      return set;
+    }
+    if (density === true && isNaN(set_width)) {
+      return set;
+    }
+    if (isNaN(set_density) && width === true) {
+      return set;
+    }
+  }
+
+  srcset.prototype.prepare_swap_src_with_match = function (match) {
+    var $img = this.$element;
+    var match_path = match[0];
+
+    if (this.options.ajax) {
+      // validate image
+      var img_call = $.ajax(img_src)
+      .success(function() {
+        this.swap_src_with_match($img, match_path);
+      });
+    } else {
+      this.swap_src_with_match($img, match_path);
+    }
+  }
+
+  srcset.prototype.swap_src_with_match = function ($img, url) {
+    var current_url = $img.attr("src");
+    var original_src = $img.attr("data-original-src");
+
+    // move src to data-original-src
+    if (original_src === undefined) {
+      $img.attr("data-original-src", current_url);
+    }
+
+    // edit src with match path
+    $img.attr("src", url);
+  }
 
 
 
+  // ------------------------------------------------
 
 
 
+  // helper
 
+  srcset.prototype.detect_display_densitiy = function () {
+    var density = window.devicePixelRatio;
+    window.density = density;
 
+    return density;
+  }
 
+  srcset.prototype.get_current_window_width = function () {
+    var window_width = $(window).outerWidth(true);
+    window.width = window_width;
 
+    return window_width;
+  }
 
+  srcset.prototype.parse_set = function (set) {
+    var src = set[0];
+    var width = null;
+    var density = null;
+    var conditions = set.slice();
 
+    // remove path
+    conditions.splice(0, 1);
 
-// detect dispaly densitiy
-function detect_display_densitiy() {
-  density = window.devicePixelRatio;
-  window.density = density;
+    // apply conditions
+    $(conditions).each(function() {
+      var condition = this;
 
-  return density;
-}
+      // width
+      if (condition.indexOf("w") > -1) {
+        width = condition.replace("w", "");
+      }
 
-// detect current image size
-function get_current_size_key(sizes) {
-  if (sizes != null) {
-    current_screen_width = $(window).outerWidth(true);
-    current_key = null;
-
-    $.each(sizes, function(key, value) {
-      if (current_screen_width >= value) {
-        current_key = key;
+      // density
+      if (condition.indexOf("x") > -1) {
+        density = condition.replace("x", "");
       }
     });
-    return current_key;
-  }
-  return null;
-}
 
-// replace images
-function prepare_image_swap(image, key, density, settings) {
-  $image = $(image);
+    // apply updated conditions to set
+    set[1] = width;
+    set[2] = density;
 
-  if (key == null) {
-    // if hires
-    if (settings.hires) {
-      attribute = "data-" + settings.hires_alias + "-image";
-    }
-  } else {
-    attribute = "data-" + key + "-image";
-
-    // if hires
-    if (settings.hires) {
-      attribute = "data-" + key + "-" + settings.hires_alias + "-image";
-    }
+    return set;
   }
 
-  // console.log(attribute);
-
-  attribute_value = $image.attr(attribute);
-
-  if(image_has_attribute(image, attribute)) {
-    swap_image($image, attribute_value);
+  // :/
+  srcset.prototype.update = function () {
+    console.log("coming soon");
   }
-}
-function swap_image(image, attribute) {
-  var img_call = $.ajax(attribute)
-  .success(function() {
-    if(!image_has_attribute(image, "data-original-image-src")) {
-      image.attr("data-original-image-src", image.attr("src"));
-    }
-
-    image.attr("src", attribute);
-  });
-}
 
 
+  // srcset PLUGIN DEFINITION
+  // =======================
 
+  function Plugin(option, _relatedTarget) {
+    return this.each(function () {
+      var $this   = $(this)
+      var data    = $this.data('srcset')
+      var options = $.extend({}, srcset.DEFAULTS, $this.data(), typeof option == 'object' && option)
 
-// helper
-function image_has_attribute(image, attribute) {
-
-  $image = $(image);
-  image_attr = $image.attr(attribute);
-
-  if(typeof image_attr !== typeof undefined && image_attr !== false) {
-    return true;
+      if (!data) $this.data('srcset', (data = new srcset(this, options)))
+      if (typeof option == 'string') data[option](_relatedTarget)
+      else if (options.update) data.update(_relatedTarget)
+    })
   }
-  return false;
-}
+
+  var old = $.fn.srcset
+  $.fn.srcset             = Plugin
+  $.fn.srcset.Constructor = srcset
 
 
+  // srcset NO CONFLICT
+  // =================
 
+  $.fn.srcset.noConflict = function () {
+    $.fn.srcset = old
+    return this
+  }
 
-
-
-
-
-
-
-
-
-
-
-
-//
-//
-//
-// var doit;
-// window.onresize = function(){
-//   clearTimeout(doit);
-//   doit = setTimeout(function(){
-//     $(window).trigger("afterResize");
-//   }, 100);
-// };
-//
-//
-//
-//
-
-
-
-
-
-
-
-
-
-
-// start everthing
-// if ( $.isFunction( settings.start ) ) {
-//   settings.start.call( this );
-// }
-
-// if (settings.browsers === null) {
-//   prepare_swap($(this), settings);
-// } else {
-//   // check if we got everything
-//   if (typeof bowser === 'undefined') {
-//     console.log("you need to include bowser https://github.com/ded/bowser");
-//   } else if(settings.browsers != null) {
-//     if(typeof window.bodyclasses === 'undefined'){
-//       console.log("you need to include demography https://github.com/andrezimpel/demography");
-//     }
-//   } else {
-//     match = false;
-//     classversion = window.bodyclasses.split(" ");
-//
-//     $(classversion).each(function(index){
-//       brws_class = classversion[index];
-//       result = jQuery.inArray( brws_class, settings.browsers );
-//       if (result !== -1) {
-//         match = true;
-//       }
-//     });
-//
-//     if (!match) {
-//       prepare_swap($(this), settings);
-//     }
-//   }
-// }
-// set the callback
-// if ( $.isFunction( settings.complete ) ) {
-//   settings.complete.call( this );
-// }
+  }(jQuery);
 
 /* ========================================================================
  * Bootstrap: transition.js v3.3.0
@@ -15598,21 +15632,9 @@ jQuery(document).ready(function () {
 });
 
 // retina images
-
 $(document).ready(function(){
-  $("img").sharpness({
-    sizes: {
-     xs: 0,
-     sm: 768,
-     md: 992,
-     lg: 1200
-    },
-    hires: true
-  });
-
-  $("[data-hires]").sharpness({
-    hires_alias: "hires",
-    hires: true
+  $("[srcset]").srcset({
+    ajax: false
   });
 });
 
@@ -15713,7 +15735,7 @@ $(document).ready(function(){
       // mark navbar items as well
       possbile_navbar_anchor = document.URL.replace(base_url, "");
       possbile_navbar_anchor = possbile_navbar_anchor.split("/");
-      possbile_navbar_anchor_href = base_url + possbile_navbar_anchor[0] + ".html";
+      possbile_navbar_anchor_href = base_url + possbile_navbar_anchor[0] + '/' + possbile_navbar_anchor[1] + ".html";
 
       $(".navbar-nav a").each(function(){
         var href = $(this).attr("href");
@@ -15730,3 +15752,36 @@ $(document).ready(function(){
 
 
 //-------------
+
+
+$(document).ready(function(){
+
+  // highlight current language
+  var $language_switch = $("#language-switch");
+  var lang = $("body").attr("data-language");
+  var $active_language_anchor = $language_switch.find("." + lang);
+
+  $active_language_anchor.addClass("active");
+
+  // just change the language, not the whole path
+  var $language_switchs = $("#language-switch a");
+
+  $language_switchs.click(function(e) {
+    // e.preventDefault();
+    //
+    // var that = $(this);
+    // var current_uri = window.location.pathname;
+    // var target_language = $(that).attr("data-language");
+    // var current_language = $("body").attr("data-language");
+    //
+    // if (current_language != target_language) {
+    //   console.log(current_uri);
+    //   console.log(target_language);
+    //   console.log(this);
+    //
+    //   var target_uri = current_uri.replace(current_language, target_language);
+    //
+    //   console.log(target_uri);
+    // }
+  });
+});

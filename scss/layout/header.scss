@@ -1,6 +1,12 @@
 .header {
   margin-bottom: $space;
 }
+// remove space between nav and subnav
+.has-subnavigation {
+  .header {
+    margin-bottom: 0;
+  }
+}
 
 .header-wrapper {
 }
@@ -21,6 +27,47 @@
         max-width: 180px;
         margin: 0;
       }
+    }
+  }
+}
+
+
+.meta-navigation {
+  @extend .clearfix;
+
+  display: none;
+  font-size: $font-size-small;
+  overflow: hidden;
+  margin-top: $space-small;
+  margin-bottom: -24px;
+
+  @media (min-width: $screen-sm-min) {
+    display: block;
+  }
+
+  a {
+    padding: $space-tiny $space-small;
+  }
+}
+
+.language-switch {
+  float: right;
+  padding-right: $space-small + $space-mini;
+
+  a {
+    border-right: 1px solid $text-color;
+    display: block;
+    float: left;
+    padding-left: $space-mini;
+    padding-right: $space-mini;
+
+    &:last-child {
+      border: 0;
+    }
+
+    &.active {
+      font-weight: 700;
+      text-decoration: underline;
     }
   }
 }

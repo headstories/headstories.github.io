@@ -1,19 +1,7 @@
 // retina images
-
 $(document).ready(function(){
-  $("img").sharpness({
-    sizes: {
-     xs: 0,
-     sm: 768,
-     md: 992,
-     lg: 1200
-    },
-    hires: true
-  });
-
-  $("[data-hires]").sharpness({
-    hires_alias: "hires",
-    hires: true
+  $("[srcset]").srcset({
+    ajax: false
   });
 });
 
@@ -114,7 +102,7 @@ $(document).ready(function(){
       // mark navbar items as well
       possbile_navbar_anchor = document.URL.replace(base_url, "");
       possbile_navbar_anchor = possbile_navbar_anchor.split("/");
-      possbile_navbar_anchor_href = base_url + possbile_navbar_anchor[0] + ".html";
+      possbile_navbar_anchor_href = base_url + possbile_navbar_anchor[0] + '/' + possbile_navbar_anchor[1] + ".html";
 
       $(".navbar-nav a").each(function(){
         var href = $(this).attr("href");
@@ -131,3 +119,36 @@ $(document).ready(function(){
 
 
 //-------------
+
+
+$(document).ready(function(){
+
+  // highlight current language
+  var $language_switch = $("#language-switch");
+  var lang = $("body").attr("data-language");
+  var $active_language_anchor = $language_switch.find("." + lang);
+
+  $active_language_anchor.addClass("active");
+
+  // just change the language, not the whole path
+  var $language_switchs = $("#language-switch a");
+
+  $language_switchs.click(function(e) {
+    // e.preventDefault();
+    //
+    // var that = $(this);
+    // var current_uri = window.location.pathname;
+    // var target_language = $(that).attr("data-language");
+    // var current_language = $("body").attr("data-language");
+    //
+    // if (current_language != target_language) {
+    //   console.log(current_uri);
+    //   console.log(target_language);
+    //   console.log(this);
+    //
+    //   var target_uri = current_uri.replace(current_language, target_language);
+    //
+    //   console.log(target_uri);
+    // }
+  });
+});
