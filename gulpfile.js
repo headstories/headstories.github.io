@@ -23,7 +23,8 @@ var gulp = require('gulp'),
     frontmatter = require('gulp-front-matter'),
     each = require("foreach"),
     marked = require("gulp-marked"),
-    uncss = require('gulp-uncss');
+    uncss = require('gulp-uncss'),
+    changed = require('gulp-changed');
 
 
 // ------------------------------------------
@@ -83,11 +84,15 @@ gulp.task('sass', function () {
   .on('error', function (err) {
     console.error('Error!', err.message);
   })
+  .pipe(gulp.dest('./dist/css'));
+});
+gulp.task('uncss', function () {
+  gulp.src('./dist/css/headstories.css')
+  .pipe(uncss({
+    html: ['./public/**/*.html']
+  }))
+  .pipe(rename({ extname: '.min.css' }))
   .pipe(gulp.dest('./dist/css'))
-  // .pipe(uncss({
-  //   html: ['./public/**/*.html']
-  // }))
-  .pipe(gulp.dest('./dist/css/uncss'));
 });
 
 gulp.task('scripts', function() {
@@ -244,8 +249,9 @@ gulp.task('convert', function() {
     }
   }
 
-  gulp.src('./content/**/*.md')
+  gulp.src('./content/**/**/*.md')
     .pipe(plumber())
+    .pipe(changed('./public/', {extension: '.html'}))
     .pipe(frontmatter({ // optional configuration
       property: 'frontMatter', // property added to file object
       remove: true // should we remove front-matter header?
@@ -260,14 +266,19 @@ gulp.task('convert', function() {
       var content_dir = cwd + "/content";
       var file_dir = path.dirname(file.path);
 
+      console.log("-------");
+      console.log("Processing:");
+      console.log(file_dir);
+      console.log(data.slug);
+
       // adjust file directory
       file_dir = file_dir.replace(content_dir, "") + "/";
 
       gulp.src('./views/layouts/' + file.frontMatter.layout + '.handlebars')
         .pipe(handlebars(data, options))
         .pipe(rename(file_dir + data.slug + '.html'))
-        .pipe(gulp.dest('./public/'))
-        .pipe(gulp.dest('./'));
+        .pipe(gulp.dest('./'))
+        .pipe(gulp.dest('./public/'));
     }))
 });
 

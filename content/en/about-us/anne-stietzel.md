@@ -5,10 +5,9 @@ layout: main
 section: about_us
 body_class: anne-stietzel
 locale: en
-# img: /dist/img/about-us/anne.jpg
-img: http://www.placehold.it/600x500
+img: /dist/img/about-us/anne-stietzel.jpg
+img2x: /dist/img/about-us/anne-stietzel@2x.jpg
 ---
+striving to become the top address in her line, anne keeps being passionate and determined. she finished her apprenticeship at Claudia Dietze Friseure with „very good“. this gave her the opportunity to receive a scholarship of the Federal Ministry of Education and Research.
 
-striving to become the top address in her line, anne keeps being passionate and determined. she finished her apprenticeship at Claudia Dietze Friseure with the mark „very good“ which gave her the opportunity receive a scholarship of the Federal Ministry of Education and Research.
-
-in 2014 anne took the chance to become a professional hair and make up artist, fashion stylist and style consultant at the Beauty and Fame Academy in Munich. those highly regarded degrees and her master craftmans training allowed her to design and open up head stories within a few months in january 2015.
+in 2014 anne took the chance to become a professional hair and make up artist, fashion stylist and style consultant at the Beauty and Fame Academy in Munich. those highly regarded degrees and her master craftman's training allowed her to design and open up head stories within a few months on january 5th 2015.

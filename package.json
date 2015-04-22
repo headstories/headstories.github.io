@@ -36,7 +36,8 @@
     "gulp-watch": "latest",
     "gulp-yaml": "latest",
     "handlebars": "latest",
-    "path": "latest"
+    "path": "latest",
+    "gulp-changed": "latest"
   },
   "engineStrict": true,
   "engines": {
