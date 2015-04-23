@@ -9,24 +9,24 @@ locale: de
 slides:
   materials:
     active: true
-    title: materialien
-    body: unser laden besteht aus natürlichen und umweltfreundlichen materialien. der unauffällige geruch von holz und leder erzeugt eine herzliche und warme atmosphäre. diesen anspruch haben wir bei allem was wir machen. wir wollen dir eine vollkommen natürliche erfahrung ermöglichen.
+    title: Materialien
+    body: Unser Laden besteht aus natürlichen und umweltfreundlichen Materialien. Der unauffällige Geruch von Holz und Leder erzeugt eine herzliche und warme Atmosphäre. Diesen Anspruch haben wir bei allem was wir machen. Wir wollen dir eine vollkommen natürliche Erfahrung ermöglichen.
     img: /dist/img/about-us/location/materials.jpg
     img2x: /dist/img/about-us/location/materials@2x.jpg
-    prev: farben
-    next: details
+    prev: Farben
+    next: Details
   details:
-    title: details
-    body: wir achten auf jedes detail. völlig egal ob es dabei um deine frisur oder individuell handgearbeitete akzente in unserem laden geht. du wirst feinheiten entdecken die du sonst nirgends sehen kannst. unser geländer, die gaderobe und wundervolle dekoration aus holz stammen von einem regionalen tischler.
+    title: Details
+    body: Wir achten auf jedes Detail. Völlig egal ob es dabei um deine Frisur oder individuell handgearbeitete Akzente in unserem Laden geht. Du wirst Feinheiten entdecken die Du sonst nirgends sehen kannst. Unser Geländer, die Gaderobe und wundervolle Dekoration aus Holz stammen von einem regionalen Tischler.
     img: /dist/img/about-us/location/details.jpg
     img2x: /dist/img/about-us/location/details@2x.jpg
-    prev: materialien
-    next: farben
+    prev: Materialien
+    next: Farben
   colors:
-    title: farben und einrichtung
-    body: unsere ausgewählten materialien haben einen direkten einfluss auf die farben und einrichtung des ladens. head stories unauffälliges und minimalistisches interieur verdeutlichen unseren anspruch alles auf seine essenziellen bestandteile zu reduzieren. du wirst unsere einzigartige und warme atmosphäre lieben.
+    title: Farben und Einrichtung
+    body: Unsere ausgewählten Materialien haben einen direkten Einfluss auf die Farben und Einrichtung des Ladens. head stories unauffälliges und minimalistisches Interieur verdeutlicht unseren Anspruch alles auf seine essenziellen Bestandteile zu reduzieren. Du wirst unsere einzigartige und warme Atmosphäre lieben.
     img: /dist/img/about-us/location/colors-and-furniture.jpg
     img2x: /dist/img/about-us/location/colors-and-furniture@2x.jpg
-    prev: details
-    next: materialien
+    prev: Details
+    next: Materialien
 ---

@@ -9,8 +9,8 @@ locale: de
 img: /dist/img/about-us/quality.jpg
 img2x: /dist/img/about-us/quality@2x.jpg
 ---
-wir versprechen dir den besten haarschnitt den du jemals hattest. trotzdem wollen wir noch viel mehr. wir arbeiten hart um dir einen außergewöhnlichen all-in-one service zu bieten. unser team kann dir mit seinem umfassenden wissen und fähigkeiten das beste make up sowie eine erstklassige style und image beratung geben.
+Wir stimmen Haarschnitt und -farbe immer auf einander ab. Aber wir machen noch viel mehr als das. Wir arbeiten hart um Dir einen außergewöhnlichen All-in-One-Service zu bieten. Unser Team kann Dir mit seinem umfassenden Wissen und seinen Fähigkeiten ein erstklassiges Make up zaubern sowie eine typgerechte Stil- und Imageberatung geben.
 
-wir heben deine eigene persönlichkeit sowie deine eigenen stärken hervor. die grundlage dafür ist unsere sehr individuelle beratung. ein ausgezeichnetes styling ist der schlüssel zu mehr selbstbewusstsein und erfolg.
+Wir heben deine eigene Persönlichkeit sowie deine eigenen Stärken hervor. Die Grundlage dafür ist unsere sehr individuelle Beratung. Ein ausgezeichnetes Styling ist der Schlüssel zu mehr Selbstbewusstsein und Erfolg.
 
 wir wollen die nummer eins sein. darum arbeiten wir mit weltmarkführern wie Great Lenghts, Ghd, Revlon und American Crew zusammen.
