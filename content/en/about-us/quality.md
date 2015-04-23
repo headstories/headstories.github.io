@@ -13,4 +13,4 @@ We are matching your haircut to your haircolor. Nevertheless our mission is to g
 
 The foundation to enhance your own strengths and personality is to analyse your current status quo in a very individual manner. An appropriate styling is the key for greater self confidence and success.
 
-We want to be number one. That's why we cooperate with world market leaders like Great Lengths, Ghd, Revlon and American Crew.
+We want to be one of the top address in our line. That's why we cooperate with world market leaders like Great Lengths, Ghd, Revlon and American Crew.

@@ -13,4 +13,4 @@ Wir stimmen Haarschnitt und -farbe immer auf einander ab. Aber wir machen noch v
 
 Wir heben deine eigene Persönlichkeit sowie deine eigenen Stärken hervor. Die Grundlage dafür ist unsere sehr individuelle Beratung. Ein ausgezeichnetes Styling ist der Schlüssel zu mehr Selbstbewusstsein und Erfolg.
 
-wir wollen die nummer eins sein. darum arbeiten wir mit weltmarkführern wie Great Lenghts, Ghd, Revlon und American Crew zusammen.
+Wir wollen die Top-Adresse sein und nur das Beste für dich. Darum arbeiten wir mit Weltmarkführern wie Great Lenghts, ghd, Revlon und American Crew zusammen.
