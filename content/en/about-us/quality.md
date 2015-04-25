@@ -6,6 +6,8 @@ section: about_us
 body_class: quality
 locale: en
 
+keywords: head stories, anne stietzel, chemnitz, haircut, consulting, premium, quality
+
 img: /dist/img/about-us/quality.jpg
 img2x: /dist/img/about-us/quality@2x.jpg
 ---

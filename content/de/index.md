@@ -20,5 +20,7 @@ box_3_headline: Unsere Freunde
 box_3_teaser: empty
 box_3_url: https://www.facebook.com/headstories.othermatters
 box_3_label: Folge uns auf Facebook
+
+keywords: head stories, friseur, chemnitz, friseurbedarf, make up, extensions, kosmetik, haarschnitt, färben, brautstyling, typberatung, stilberatung, anne stietzel
 ---
 # Startseite

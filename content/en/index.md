@@ -6,6 +6,8 @@ section: index
 body_class: front
 locale: en
 
+keywords: head stories, anne stietzel, chemnitz, haircut, consulting, premium
+
 box_1_headline: our story
 box_1_teaser: New to head stories? Learn more about our mission and values.
 box_1_url: /en/about-us/our-story.html

@@ -6,6 +6,8 @@ section: about_us
 body_class: location
 locale: de
 
+keywords: head stories, laden, friseur, chemnitz, kaßberg, friseurbedarf, beratung, erfolg
+
 slides:
   materials:
     active: true
@@ -30,3 +32,5 @@ slides:
     prev: Details
     next: Materialien
 ---
+
+Unser Laden besteht aus natürlichen und umweltfreundlichen Materialien. Der unauffällige Geruch von Holz und Leder erzeugt eine herzliche und warme Atmosphäre. Diesen Anspruch haben wir bei allem was wir machen. Wir wollen dir eine vollkommen natürliche Erfahrung ermöglichen.

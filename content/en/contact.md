@@ -5,6 +5,8 @@ layout: wide
 section: about_us
 body_class: about-us
 locale: en
+
+keywords: head stories, anne stietzel, chemnitz, haircut, consulting, contact
 ---
 # contact
 

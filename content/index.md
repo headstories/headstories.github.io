@@ -4,6 +4,8 @@ title: Startseite
 layout: front
 body_class: front home
 locale: de
+
+keywords: head stories, anne stietzel, chemnitz, friseur
 ---
 # Startseite
 

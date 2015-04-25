@@ -5,6 +5,8 @@ layout: wide
 section: services
 body_class: services
 locale: en
+
+keywords: head stories, anne stietzel, chemnitz, haircut, consulting, premium
 ---
 # Services
 

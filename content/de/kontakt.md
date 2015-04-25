@@ -5,6 +5,7 @@ layout: wide
 section: contact
 body_class: contact
 locale: de
+keywords: head stories, kontakt, friseur, chemnitz, friseurbedarf, make up, extensions, kosmetik, trends, haarschnitt, färben, brautstyling, typberatung, stilberatung, anne stietzel
 ---
 # Kontakt
 

@@ -30,3 +30,5 @@ slides:
     prev: Details
     next: Materials
 ---
+
+Our shop is made of all natural and environmentally friendly materials. The unobtrusive smell of wood and leather create a cordial and warm atmosphere. This attitude goes even down to everything we do. our goal is to give you an all natural experience.

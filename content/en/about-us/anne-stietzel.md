@@ -7,6 +7,8 @@ body_class: anne-stietzel
 locale: en
 img: /dist/img/about-us/anne-stietzel.jpg
 img2x: /dist/img/about-us/anne-stietzel@2x.jpg
+
+keywords: head stories, anne stietzel, chemnitz, haircut, consulting, premium
 ---
 Striving to become one of the top address in her line, anne keeps being passionate and determined. She finished her apprenticeship with „very good“ which gave her the opportunity to receive a scholarship of the Federal Ministry of Education and Research.
 

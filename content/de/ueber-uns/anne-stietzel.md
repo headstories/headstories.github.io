@@ -7,6 +7,8 @@ body_class: anne-stietzel
 locale: de
 img: /dist/img/about-us/anne-stietzel.jpg
 img2x: /dist/img/about-us/anne-stietzel@2x.jpg
+
+keywords: head stories, anne stietzel, friseur, chemnitz, friseurbedarf, beratung, erfolg, persönlichkeit, beauty and fame academy, münchen
 ---
 Anne will eine der Top-Adressen ihrer Branche werden. Dabei bleibt sie stets leidenschaftlich und entschlossen. Sie hat ihre Ausbildung mit "sehr gut" abgeschlossen, dadurch erhielt sie ein Begabtenstipendium des Bundesministeriums für Bildung und Forschung.
 

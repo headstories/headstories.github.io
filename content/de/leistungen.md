@@ -5,6 +5,7 @@ layout: wide
 section: services
 body_class: services
 locale: de
+keywords: head stories, leistungen, friseur, chemnitz, friseurbedarf, make up, extensions, kosmetik, trends, haarschnitt, färben, brautstyling, typberatung, stilberatung, anne stietzel
 ---
 # Leistungen
 

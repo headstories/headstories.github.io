@@ -245,6 +245,10 @@ gulp.task('convert', function() {
         } catch (e) {
           return "Partial not found";
         }
+      },
+
+      stripHTML: function(content) {
+        return content.replace(/<\/?[^>]+(>|$)/g, "").trim();
       }
     }
   }

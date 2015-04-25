@@ -5,6 +5,8 @@ layout: wide
 section: impressum
 body_class: impressum
 locale: de
+
+keywords: head stories, anne stietzel, chemnitz, friseur
 ---
 # Impressum
 
