@@ -12,7 +12,7 @@ slides:
   materials:
     active: true
     title: Materialien
-    body: Unser Laden besteht aus natürlichen und umweltfreundlichen Materialien. Der unauffällige Geruch von Holz und Leder erzeugt eine herzliche und warme Atmosphäre. Diesen Anspruch haben wir bei allem was wir machen. Wir wollen dir eine vollkommen natürliche Erfahrung ermöglichen.
+    body: Unser Laden besteht aus natürlichen und umweltfreundlichen Materialien. Der unauffällige Geruch von Holz und Leder erzeugt eine herzliche und warme Atmosphäre. Diesen Anspruch haben wir bei allem was wir machen. Wir wollen Dir eine vollkommen natürliche Erfahrung ermöglichen.
     img: /dist/img/about-us/location/materials.jpg
     img2x: /dist/img/about-us/location/materials@2x.jpg
     prev: Farben

@@ -12,7 +12,7 @@ box_1_url: /de/ueber-uns/unsere-geschichte.html
 box_1_label: Weitere Infos über uns
 
 box_2_headline: unser laden
-box_2_teaser: Du wirst unsere einzigartige und herzliche Atmosphere lieben.
+box_2_teaser: Du wirst unsere einzigartige und herzliche Atmosphäre lieben.
 box_2_url: /de/ueber-uns/location.html
 box_2_label: Alle Impressionen
 
