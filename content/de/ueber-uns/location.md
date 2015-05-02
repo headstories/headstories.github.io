@@ -19,7 +19,7 @@ slides:
     next: Details
   details:
     title: Details
-    body: Wir achten auf jedes Detail. Völlig egal ob es dabei um deine Frisur oder individuell handgearbeitete Akzente in unserem Laden geht. Du wirst Feinheiten entdecken die Du sonst nirgends sehen kannst. Unser Geländer, die Gaderobe und wundervolle Dekoration aus Holz stammen von einem regionalen Tischler.
+    body: Wir achten auf jedes Detail. Völlig egal ob es dabei um deine Frisur oder individuell handgearbeitete Akzente in unserem Laden geht. Du wirst Feinheiten entdecken, die Du sonst nirgends sehen kannst. Unser Geländer, die Gaderobe und wundervolle Dekoration aus Holz stammen von einem regionalen Tischler.
     img: /dist/img/about-us/location/details.jpg
     img2x: /dist/img/about-us/location/details@2x.jpg
     prev: Materialien
