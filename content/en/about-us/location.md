@@ -17,7 +17,7 @@ slides:
     next: Details
   details:
     title: details
-    body: We work hard to focus on every detail possible. No matter whether it’s your cut and color or custom handcrafted details in our shop. You will notice fine touches you can’t see anywhere else. Our handrails, wardrobe and beautiful wooden decoration are made by an local carpenter exclusively for head stories.
+    body: We work hard to focus on every detail possible. No matter whether it’s your cut and color or custom handcrafted details in our shop. You will notice fine touches you can’t see anywhere else. Our handrails, wardrobe and beautiful wooden decoration are made by a local carpenter exclusively for head stories.
     img: /dist/img/about-us/location/details.jpg
     img2x: /dist/img/about-us/location/details@2x.jpg
     prev: Materials
