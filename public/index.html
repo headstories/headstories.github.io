@@ -6,8 +6,8 @@
     <link rel="shortcut icon" href="/favicon.png">
 
     <!--   that's me!   -->
-    <title>Startseite - head stories &amp; OTHER MATTERS</title>
-    <!-- <link rel="shortcut icon" href="/favicon.png"> -->
+    <title>Startseite - head stories chemnitz</title>
+    <link rel="shortcut icon" href="/favicon.png">
 
     <meta property="fb:admins" content="100001448282593"/>
     <meta property="fb:admins" content="100001426361532"/>
@@ -17,8 +17,9 @@
     <meta property="og:title" content="head stories &amp; OTHER MATTERS">
     <meta property="og:locale" content="en_US">
     <meta property="og:image" content="http://www.headstories.de/dist/img/facebook-sharing-image.jpg">
-    <meta property="og:description" content="description">
+    <meta property="og:description" content="Startseite">
     <meta property="og:site_name" content="head stories &amp; OTHER MATTERS">
+    <meta name="keywords" content="head stories, anne stietzel, chemnitz, friseur">
 
     <!--   meta tags   -->
     <meta charset="utf-8">
@@ -26,7 +27,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
     <!--   include css   -->
-    <link rel="stylesheet" type="text/css" media="screen" href="dist/css/headstories.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/dist/css/headstories.css">
 
     <script src="/dist/js/headstories.js"></script>
 
@@ -38,83 +39,119 @@
     <![endif]-->
   </head>
 
+<body class="front home" data-language="de">
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/de_DE/sdk.js#xfbml=1&appId=237433522954836&version=v2.0";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
 
-  <body class="home">
-    <div id="fb-root"></div>
-    <script>(function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/de_DE/sdk.js#xfbml=1&appId=237433522954836&version=v2.0";
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
-
-    <header class="header">
-  <div class="container">
-    <div class="header-wrapper">
-      <div class="logo-wrapper">
-  <a href="/">
-    <img src="/dist/img/head-stories-vertical.jpg" data-hires="/dist/img/head-stories-vertical@2x.jpg" alt="head stories home" width="250">
-  </a>
-</div>
-
-      <nav class="navbar">
-  <!-- Brand and toggle get grouped for better mobile display -->
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#head-stories-main-navigation">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <a href="" class="navbar-brand">Startseite</a>
-  </div>
-
-  <!-- Collect the nav links, forms, and other content for toggling -->
-  <div class="collapse navbar-collapse" id="head-stories-main-navigation">
-    <ul class="nav navbar-nav">
-      <!-- <li><a href="/philosophie.html">Philosophie</a></li> -->
-      <!-- <li><a href="#">Team</a></li> -->
-      <!-- <li><a href="#">Locations</a></li> -->
-      <li><a href="/leistungen.html">Leistungen</a></li>
-      <li><a href="/lookbook.html">Lookbook</a></li>
-
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="/kontakt.html">Kontakt</a></li>
-    </ul>
-  </div><!-- /.navbar-collapse -->
-</nav>
-
+  <header class="header">
+    <div class="container">
+      <div class="header-wrapper">
+        <div class="meta-navigation">
+          <div id="language-switch" class="language-switch">
+            <a class="en" data-language="en" href="/en/index.html">en</a>
+            <a class="de" data-language="de" href="/de/index.html">de</a>
+          </div>
+        </div>
+        <div class="logo-wrapper">
+          <a href="/de/index.html">
+            <img src="/dist/img/head-stories-vertical.jpg"
+                 srcset="/dist/img/head-stories-vertical@2x.jpg 2x"
+            alt="head stories home" width="250">
+          </a>
+        </div>
+        <nav class="navbar">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#head-stories-main-navigation">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a href="" class="navbar-brand">Startseite</a>
+          </div>
+  
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="head-stories-main-navigation">
+            <ul class="nav navbar-nav">
+    <li><a href="/de/ueber-uns.html">Über uns</a></li>
+    <li><a href="/de/lookbook.html">Lookbook</a></li>
+    <li><a href="/de/leistungen.html">Leistungen</a></li>
+  </ul>
+  <ul class="nav navbar-nav navbar-right">
+    <li><a href="/de/kontakt.html">Kontakt</a></li>
+  </ul>
+  
+            <ul class="nav navbar-nav navbar-right navbar-language">
+              <li><a href="/en/index.html">English</a></li>
+              <li><a href="/de/index.html">Deutsch</a></li>
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </nav>
+      </div>
     </div>
+  </header>
+
+  <div class="hidden">
+    <h1 id="startseite">Startseite</h1>
+<meta http-equiv="refresh" content="0; url=/de/index.html" />
+
   </div>
-</header>
 
+  <div class="page">
+    <div class="container">
+      <div class="page-wrapper">
+        <img class="billboard-image" src="/dist/img/home/billboard.jpg" srcset="/dist/img/home/billboard@2x.jpg 2x">
 
-    <div class="page">
-      <div class="container">
-        <div class="page-wrapper">
-          <img class="billboard-image" src="/dist/img/home/billboard.jpg" data-hires="/dist/img/home/billboard@2x.jpg">
-
-          <div class="fb-like" data-href="https://www.facebook.com/headstories.othermatters" data-width="280" data-layout="standard" data-action="like" data-show-faces="true" data-share="false"></div>
+        <div class="front-teasers">
+          <div class="front-teaser">
+            <h3>
+              <a href=""></a>
+            </h3>
+            <p class="front-teaser-body">
+              
+            </p>
+            <a class="more-block" href=""></a>
+          </div>
+          <div class="front-teaser">
+            <h3>
+              <a href=""></a>
+            </h3>
+            <p class="front-teaser-body">
+              
+            </p>
+            <a class="more-block" href=""></a>
+          </div>
+          <div class="front-teaser">
+            <h3>
+              <a href=""></a>
+            </h3>
+            <div class="fb-like fb-like-sm" data-href="https://www.facebook.com/headstories.othermatters" data-width="220" data-layout="standard" data-action="like" data-show-faces="true" data-share="false"></div>
+            <div class="fb-like fb-like-not-sm" data-href="https://www.facebook.com/headstories.othermatters" data-width="280" data-layout="standard" data-action="like" data-show-faces="true" data-share="false"></div>
+            <a class="more-block" href="" target="_blank"></a>
+          </div>
         </div>
       </div>
     </div>
-
-    <footer class="footer">
-  <div class="container">
-    <div class="footer-wrapper">
-      <a class="address" href="#">
-        BARBAROSSASTRASSE 32, 09112 CHEMNITZ,
-      </a>
-      <a class="phone" href="tel:+4937128306883">
-        0371 .28306883
-      </a>
-      <a class="imprint" href="/impressum.html">Impressum</a>
-    </div>
   </div>
-</footer>
 
-
-  </body>
-</html>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-wrapper">
+        <a class="address" href="#">
+          BARBAROSSASTRASSE 32, 09112 CHEMNITZ,
+        </a>
+        <a class="phone" href="tel:+4937128306883">
+          0371 .28306883
+        </a>
+        <a class="imprint" href="/impressum.html">Impressum</a>
+      </div>
+    </div>
+  </footer>
+</body>

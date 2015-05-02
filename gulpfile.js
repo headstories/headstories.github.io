@@ -4,12 +4,27 @@ var gulp = require('gulp'),
     sass = require('gulp-ruby-sass'),
     concat = require('gulp-concat'),
     path = require('path'),
+    fs = require('fs'),
     cleanhtml = require('gulp-cleanhtml'),
     minifyCSS = require('gulp-minify-css'),
     rename = require('gulp-rename'),
     fileinclude = require('gulp-file-include'),
     plumber = require('gulp-plumber'),
-    imageResize = require('gulp-image-resize');
+    imageResize = require('gulp-image-resize'),
+    handlebars = require('gulp-compile-handlebars'),
+    Handlebars = require('handlebars'),
+    markdown = require('gulp-markdown-to-json'),
+    logger = require('gulp-logger'),
+    swig = require('gulp-swig'),
+    data = require('gulp-data'),
+    yaml = require('gulp-yaml'),
+    gulpSequence = require('gulp-sequence'),
+    foreach = require('gulp-foreach'),
+    frontmatter = require('gulp-front-matter'),
+    each = require("foreach"),
+    marked = require("gulp-marked"),
+    uncss = require('gulp-uncss'),
+    changed = require('gulp-changed');
 
 
 // ------------------------------------------
@@ -17,13 +32,13 @@ var gulp = require('gulp'),
 
 // paths
 var paths = {
-  scripts: ['javascripts/**/*.js'],
+  scripts: ['javascripts/**/*.js', 'bower_components/**/*.js'],
   images: 'img/**/*',
   fonts: 'fonts/**/*',
   sass: "scss/**/*.scss",
-  html: ["content/**/*.html"],
-  watch_html: ["content/**/*.html", "templates/**/*.html"],
-  public_dist: "dist/**/*.*"
+  html: ["content/**/*.html", "content/**/*.md", "views/**/*.handlebars"],
+  watch_html: ["content/**/*.html", "content/**/*.md", "views/**/*.handlebars"],
+  public_dist: ["dist/**/*"]
 };
 
 
@@ -34,8 +49,8 @@ var paths = {
 gulp.task('watch', function () {
   gulp.watch(paths.scripts, ['scripts']);
   gulp.watch(paths.images, ['images']);
-  gulp.watch(paths.sass, ['sass']);
-  gulp.watch(paths.watch_html, ['html_dev', "html_prod"]);
+  gulp.watch(paths.sass, ['sass', 'public_bower']);
+  gulp.watch(paths.watch_html, ['convert']);
   gulp.watch(paths.public_dist, ['public_dist']);
 });
 
@@ -65,10 +80,19 @@ gulp.task('html_prod', function () {
 
 // compile sass to css and store it in dist
 gulp.task('sass', function () {
-  gulp.src('./scss/headstories.scss')
-    .pipe(plumber())
-    .pipe(sass())
-    .pipe(gulp.dest('./dist/css'));
+  sass('./scss/headstories.scss')
+  .on('error', function (err) {
+    console.error('Error!', err.message);
+  })
+  .pipe(gulp.dest('./dist/css'));
+});
+gulp.task('uncss', function () {
+  gulp.src('./dist/css/headstories.css')
+  .pipe(uncss({
+    html: ['./public/**/*.html']
+  }))
+  .pipe(rename({ extname: '.min.css' }))
+  .pipe(gulp.dest('./dist/css'))
 });
 
 gulp.task('scripts', function() {
@@ -77,7 +101,7 @@ gulp.task('scripts', function() {
             './bower_components/modernizr/modernizr.js',
             './bower_components/bowser/bowser.js',
             './bower_components/demography/demography.js',
-            './bower_components/sharpness/sharpness.js',
+            './bower_components/jquery.srcset/jquery.srcset.js',
             './bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/transition.js',
             './bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/alert.js',
             './bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/button.js',
@@ -95,7 +119,8 @@ gulp.task('scripts', function() {
             './bower_components/blueimp-gallery/js/jquery.blueimp-gallery.js',
             './bower_components/blueimp-bootstrap-image-gallery/js/bootstrap-image-gallery.js',
             './bower_components/jquery-instagram/dist/instagram.js',
-            "./javascripts/headstories.js"
+            './javascripts/map.js',
+            './javascripts/headstories.js'
             ])
     .pipe(plumber())
     .pipe(concat('headstories.js'))
@@ -123,6 +148,17 @@ gulp.task('fonts', function () {
 gulp.task('public_dist', function () {
   gulp.src(paths.public_dist)
     .pipe(gulp.dest('./public/dist'));
+});
+
+gulp.task('dist', function () {
+  gulp.src('./dist')
+    .pipe(gulp.dest('./public/dist'));
+});
+
+// copy bower components to public dist
+gulp.task('public_bower', function () {
+  gulp.src('./bower_components/**/*.css')
+    .pipe(gulp.dest('./dist/bower_components'));
 });
 
 
@@ -171,8 +207,88 @@ gulp.task('lookbook_images', function () {
   .pipe(gulp.dest('./dist/img/lookbook/'));
 });
 
+
+// ------------------------------------------
+
+
+// contents
+gulp.task('convert', function() {
+  var templateData = {
+    slug: "products",
+    title: "Products",
+    layout: "main",
+    body_class: "products"
+  },
+  options = {
+    ignorePartials: true, //ignores the unknown footer2 partial in the handlebars template, defaults to false
+    partials : {
+      footer : '<footer>the end</footer>'
+    },
+    batch : ['./views/layouts/partials', './views/aside/', './views/lookbook'],
+    helpers : {
+      aside : function(name, context){
+        try {
+          var my_data = context.data.root;
+          var f = fs.readFileSync('./views/aside/' + context.data.root.locale + '/' + name + '.handlebars', 'utf8');
+          return Handlebars.compile(f)(my_data);
+        } catch (e) {
+          console.log(e);
+          return "Partial not found";
+        }
+      },
+
+      navigation : function(locale, context){
+        try {
+          var my_data = context.data.root;
+          var f = fs.readFileSync('./views/layouts/partials/_navigation_' + locale + '.handlebars', 'utf8');
+          return Handlebars.compile(f)(my_data);
+        } catch (e) {
+          return "Partial not found";
+        }
+      },
+
+      stripHTML: function(content) {
+        return content.replace(/<\/?[^>]+(>|$)/g, "").trim();
+      }
+    }
+  }
+
+  gulp.src('./content/**/**/*.md')
+    .pipe(plumber())
+    .pipe(changed('./public/', {extension: '.html'}))
+    .pipe(frontmatter({ // optional configuration
+      property: 'frontMatter', // property added to file object
+      remove: true // should we remove front-matter header?
+    }))
+    .pipe(marked({
+        // optional : marked options
+    }))
+    .pipe(data(function(file) {
+      var data = file.frontMatter;
+      data["body"] = decodeURI(file.contents);
+      var cwd = file.cwd;
+      var content_dir = cwd + "/content";
+      var file_dir = path.dirname(file.path);
+
+      console.log("-------");
+      console.log("Processing:");
+      console.log(file_dir);
+      console.log(data.slug);
+
+      // adjust file directory
+      file_dir = file_dir.replace(content_dir, "") + "/";
+
+      gulp.src('./views/layouts/' + file.frontMatter.layout + '.handlebars')
+        .pipe(handlebars(data, options))
+        .pipe(rename(file_dir + data.slug + '.html'))
+        .pipe(gulp.dest('./'))
+        .pipe(gulp.dest('./public/'));
+    }))
+});
+
+
 // ------------------------------------------
 
 
 // The default task (called when you run `gulp` from cli)
-gulp.task('default', ['sass', 'images','fonts', 'html_dev', 'html_prod', 'public_dist', 'scripts', 'lookbook_images', 'watch']);
+gulp.task('default', ['sass', 'images','fonts', 'convert', 'dist', 'scripts', 'watch']);

@@ -65,6 +65,13 @@
     }
   }
 
+  &.navbar-language {
+    margin-top: $space-medium;
+
+    @media (min-width: $screen-sm-min) {
+      display: none;
+    }
+  }
 }
 
 .icon-bar {

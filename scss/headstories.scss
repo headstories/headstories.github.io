@@ -2,12 +2,12 @@
 
 @import "../bower_components/bootstrap-sass-official/assets/stylesheets/_bootstrap";
 @import "../bower_components/font-awesome/scss/font-awesome";
-@import "../bower_components/animate.css/animate";
-@import "../bower_components/blueimp-gallery/css/blueimp-gallery.scss";
-@import "../bower_components/blueimp-gallery/css/blueimp-gallery-indicator.scss";
-@import "../bower_components/blueimp-bootstrap-image-gallery/css/bootstrap-image-gallery.scss";
+@import "_animate";
+@import "../bower_components/blueimp-gallery/css/blueimp-gallery.css";
+@import "../bower_components/blueimp-gallery/css/blueimp-gallery-indicator.css";
+@import "../bower_components/blueimp-bootstrap-image-gallery/css/bootstrap-image-gallery.css";
 
-//@import url("http://fonts.googleapis.com/css?family=Lato:400,700");
+@import "_mixins";
 
 // layout
 @import "layout/header";
@@ -16,12 +16,16 @@
 @import "layout/footer";
 @import "layout/forms";
 @import "layout/html";
+@import "layout/aside";
 
 // content
 @import "content/home";
 @import "content/lookbook";
 @import "content/contact";
 @import "content/services";
+@import "content/imprint";
+@import "content/misc";
+@import "location/carousel";
 
 
 // fonts
@@ -42,15 +46,6 @@
 html, body {
   font-family: 'headstories', sans-serif;
   color: $black;
-  // cursor: default;
-
-  // -webkit-user-select: none;  /* Chrome all / Safari all */
-  // -moz-user-select: none;     /* Firefox all */
-  // -ms-user-select: none;      /* IE 10+ */
-  //
-  // /* No support for these yet, use at own risk */
-  // -o-user-select: none;
-  // user-select: none;
 }
 
 p, form {

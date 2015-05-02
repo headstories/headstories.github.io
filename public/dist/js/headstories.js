@@ -11281,79 +11281,237 @@ $(document).ready(function(){
   }
 });
 
-(function($) {
+/* ========================================================================
+  * jquery srcset plugin srcset.js v0.0.1
+  * URL
+  * ========================================================================
+  * Copyright 2011-2015 Andre Zimpel, http://www.andrezimpel.com
+  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+  * ======================================================================== */
 
-  $.fn.sharpness = function( options ) {
 
-    // Establish our default settings
-    var settings = $.extend({
-      browsers: null,
-      attribute: 'data-hires',
-      start: null,
-      complete: null
-    }, options);
+  +function ($) {
+  'use strict';
 
-    return this.each( function() {
-      // start everthing
-      if ( $.isFunction( settings.start ) ) {
-        settings.start.call( this );
-      }
+  // srcset CLASS DEFINITION
+  // ======================
 
-      if (settings.browsers === null) {
-        prepare_swap($(this), settings);
-      } else {
-        // check if we got everything
-        if (typeof bowser === 'undefined') {
-          console.log("you need to include bowser https://github.com/ded/bowser");
-        } else if(typeof window.bodyclasses === 'undefined') {
-          console.log("you need to include demography https://github.com/andrezimpel/demography");
-        } else {
-          match = false;
-          classversion = window.bodyclasses.split(" ");
+  var srcset = function (element, options) {
+    this.options        = options
+    this.$element       = $(element)
 
-          $(classversion).each(function(index){
-            brws_class = classversion[index];
-            result = jQuery.inArray( brws_class, settings.browsers );
-            if (result !== -1) {
-              match = true;
-            }
-          });
+    this.init();
 
-          if (!match) {
-            prepare_swap($(this), settings);
-          }
-        }
-      }
-
-      // set the callback
-      if ( $.isFunction( settings.complete ) ) {
-        settings.complete.call( this );
-      }
+    // shitty, allow resizing
+    var my_this = this;
+    $(window).resize(function(){
+      my_this.init();
     });
   }
-}(jQuery));
 
-// function
-function prepare_swap(elem, settings) {
-  $this = elem;
-  var hires_src = $this.attr(settings.attribute);
-  var src = $this.attr("src");
-  var img = $this;
+  srcset.VERSION  = '0.0.1'
 
-  var img_call = $.ajax(hires_src)
-  .success(function() {
+  srcset.DEFAULTS = {
+    ajax: true
+  }
 
-    // swap image if the hires alternative is available
-    swap_hires_image(img, hires_src, src);
-  });
-}
+  srcset.prototype.init = function () {
+    // display densitiy
+    var density = this.detect_display_densitiy();
+    var window_width = this.get_current_window_width();
 
-// replace images
-function swap_hires_image(element, hires_src, src) {
-  $(element).attr("src", null);
-  $(element).attr("src", hires_src);
-  $(element).attr("data-original-src", src);
-}
+    // check if the image has the srcset attribute
+    if (this.$element.attr("srcset")) {
+      this.choose_image_and_apply_it();
+    }
+  }
+
+  srcset.prototype.choose_image_and_apply_it = function () {
+    var that = this;
+    var $img = this.$element;
+    var srcset = this.$element.attr("srcset").trim();
+    var src_images = srcset.split(",");
+    var sets = [];
+
+    // prepare data for each set
+    $(src_images).each(function(){
+      var string = this.trim();
+      var set = string.split(" ");
+
+      // adjust the set to be cool
+      set = that.parse_set(set);
+
+      // push it into the sets
+      sets.push(set);
+    });
+
+    // filter sets to find the matching set
+    var matches = sets.filter(this.filter_sets);
+
+    // get last match since we have a convetion of sorting by width and resolution
+    var match = matches[0];
+
+    // if there is a match
+    if (match !== undefined) {
+      // swap image src
+      this.prepare_swap_src_with_match(match);
+    } else {
+
+      // use original image
+      var original_src = $img.attr("data-original-src");
+
+      if (original_src !== undefined) {
+        this.swap_src_with_match($img, original_src);
+      }
+    }
+  }
+
+  srcset.prototype.filter_sets = function (set) {
+    var density = false;
+    var width = false;
+
+    // set data
+    var set_density = parseInt(set[2]);
+    var set_width = parseInt(set[1]);
+
+    // check for display density
+    if (window.density == set_density) {
+      density = true;
+    }
+
+    // check for size
+    if (window.width <= set_width) {
+      width = true;
+    }
+
+    // match the set
+    if (density === true && width === true) {
+      return set;
+    }
+    if (density === true && isNaN(set_width)) {
+      return set;
+    }
+    if (isNaN(set_density) && width === true) {
+      return set;
+    }
+  }
+
+  srcset.prototype.prepare_swap_src_with_match = function (match) {
+    var $img = this.$element;
+    var match_path = match[0];
+
+    if (this.options.ajax) {
+      // validate image
+      var img_call = $.ajax(img_src)
+      .success(function() {
+        this.swap_src_with_match($img, match_path);
+      });
+    } else {
+      this.swap_src_with_match($img, match_path);
+    }
+  }
+
+  srcset.prototype.swap_src_with_match = function ($img, url) {
+    var current_url = $img.attr("src");
+    var original_src = $img.attr("data-original-src");
+
+    // move src to data-original-src
+    if (original_src === undefined) {
+      $img.attr("data-original-src", current_url);
+    }
+
+    // edit src with match path
+    $img.attr("src", url);
+  }
+
+
+
+  // ------------------------------------------------
+
+
+
+  // helper
+
+  srcset.prototype.detect_display_densitiy = function () {
+    var density = window.devicePixelRatio;
+    window.density = density;
+
+    return density;
+  }
+
+  srcset.prototype.get_current_window_width = function () {
+    var window_width = $(window).outerWidth(true);
+    window.width = window_width;
+
+    return window_width;
+  }
+
+  srcset.prototype.parse_set = function (set) {
+    var src = set[0];
+    var width = null;
+    var density = null;
+    var conditions = set.slice();
+
+    // remove path
+    conditions.splice(0, 1);
+
+    // apply conditions
+    $(conditions).each(function() {
+      var condition = this;
+
+      // width
+      if (condition.indexOf("w") > -1) {
+        width = condition.replace("w", "");
+      }
+
+      // density
+      if (condition.indexOf("x") > -1) {
+        density = condition.replace("x", "");
+      }
+    });
+
+    // apply updated conditions to set
+    set[1] = width;
+    set[2] = density;
+
+    return set;
+  }
+
+  // :/
+  srcset.prototype.update = function () {
+    console.log("coming soon");
+  }
+
+
+  // srcset PLUGIN DEFINITION
+  // =======================
+
+  function Plugin(option, _relatedTarget) {
+    return this.each(function () {
+      var $this   = $(this)
+      var data    = $this.data('srcset')
+      var options = $.extend({}, srcset.DEFAULTS, $this.data(), typeof option == 'object' && option)
+
+      if (!data) $this.data('srcset', (data = new srcset(this, options)))
+      if (typeof option == 'string') data[option](_relatedTarget)
+      else if (options.update) data.update(_relatedTarget)
+    })
+  }
+
+  var old = $.fn.srcset
+  $.fn.srcset             = Plugin
+  $.fn.srcset.Constructor = srcset
+
+
+  // srcset NO CONFLICT
+  // =================
+
+  $.fn.srcset.noConflict = function () {
+    $.fn.srcset = old
+    return this
+  }
+
+  }(jQuery);
 
 /* ========================================================================
  * Bootstrap: transition.js v3.3.0
@@ -15364,10 +15522,120 @@ function swap_hires_image(element, hires_src, src) {
 
 }(jQuery));
 
-// retina images
+jQuery(document).ready(function () {
+  if ($("#map").length > 0) {
+    var map;
+    var centerPosition = new google.maps.LatLng(50.829906,12.903351);
 
+    var style = [
+      {
+        "featureType": "landscape.man_made",
+          "stylers": [{
+              "visibility": "on"
+          }, {
+              "color": "#f0e9e2"
+          }]
+      }
+    ]
+
+    // var style = [{
+    //     "stylers": [{
+    //         "visibility": "off"
+    //     }]
+    // }, {
+    //     "featureType": "road",
+    //         "stylers": [{
+    //         "visibility": "on"
+    //     }, {
+    //         "color": "#ffffff"
+    //     }]
+    // }, {
+    //     "featureType": "road.arterial",
+    //         "stylers": [{
+    //         "visibility": "on"
+    //     }, {
+    //         "color": "#E4E4E5"
+    //     }]
+    // }, {
+    //     "featureType": "road.highway",
+    //         "stylers": [{
+    //         "visibility": "on"
+    //     }, {
+    //         "color": "#E4E4E5"
+    //     }]
+    // }, {
+    //     "featureType": "landscape",
+    //         "stylers": [{
+    //         "visibility": "on"
+    //     }, {
+    //         "color": "#F7F6F5"
+    //     }]
+    // }, {
+    //     "featureType": "water",
+    //         "stylers": [{
+    //         "visibility": "on"
+    //     }, {
+    //         "color": "#7fc8ed"
+    //     }]
+    // }, {}, {
+    //     "featureType": "road",
+    //         "elementType": "labels",
+    //         "stylers": [{
+    //         "visibility": "off"
+    //     }]
+    // }, {
+    //     "featureType": "poi.park",
+    //         "elementType": "geometry.fill",
+    //         "stylers": [{
+    //         "visibility": "on"
+    //     }, {
+    //         "color": "#A6CE39"
+    //     }]
+    // }, {
+    //     "elementType": "labels",
+    //         "stylers": [{
+    //         "visibility": "on"
+    //     }]
+    // }, {
+    //     "featureType": "landscape.man_made",
+    //         "elementType": "geometry",
+    //         "stylers": [{
+    //         "weight": 0.9
+    //     }, {
+    //         "visibility": "off"
+    //     }]
+    // }]
+
+    var options = {
+        zoom: 16,
+        center: centerPosition,
+        scrollwheel: false,
+        mapTypeControl: true,
+        streetViewControl: true,
+        panControl: false,
+        zoomControl: true,
+        zoomControlOptions: {
+            style: google.maps.ZoomControlStyle.SMALL
+        },
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    map = new google.maps.Map($('#map')[0], options);
+    map.setOptions({
+        styles: style
+    });
+
+    var marker = new google.maps.Marker({
+        position: centerPosition,
+        map: map
+    });
+  }
+});
+
+// retina images
 $(document).ready(function(){
-  $("[data-hires]").sharpness();
+  $("[srcset]").srcset({
+    ajax: false
+  });
 });
 
 //-------------
@@ -15448,22 +15716,72 @@ $(document).ready(function(){
 // active links
 
 $(document).ready(function(){
-  $(".navbar-nav a, .sidebar-navigation a").each(function(){
+  $(".navbar-nav a, .subnavigation a").each(function(){
     $this = $(this);
     activable = $this.data("active");
 
     if (activable != false) {
       href = $this.attr("href");
+      base_url = window.location.protocol + "//" + window.location.host + "/";
       target_url = window.location.protocol + "//" + window.location.host + href;
       current_url = document.URL;
 
+      // mark actual item
       if (current_url == target_url) {
         $this.toggleClass("active");
         $this.parent().toggleClass("active");
       }
+
+      // mark navbar items as well
+      possbile_navbar_anchor = document.URL.replace(base_url, "");
+      possbile_navbar_anchor = possbile_navbar_anchor.split("/");
+      possbile_navbar_anchor_href = base_url + possbile_navbar_anchor[0] + '/' + possbile_navbar_anchor[1] + ".html";
+
+      $(".navbar-nav a").each(function(){
+        var href = $(this).attr("href");
+        var target_url = window.location.protocol + "//" + window.location.host + href;
+
+        if (possbile_navbar_anchor_href == target_url) {
+          $(this).addClass("active");
+          $(this).parent().addClass("active");
+        }
+      });
     }
   });
 });
 
 
 //-------------
+
+
+$(document).ready(function(){
+
+  // highlight current language
+  var $language_switch = $("#language-switch");
+  var lang = $("body").attr("data-language");
+  var $active_language_anchor = $language_switch.find("." + lang);
+
+  $active_language_anchor.addClass("active");
+
+  // just change the language, not the whole path
+  var $language_switchs = $("#language-switch a");
+
+  $language_switchs.click(function(e) {
+    // e.preventDefault();
+    //
+    // var that = $(this);
+    // var current_uri = window.location.pathname;
+    // var target_language = $(that).attr("data-language");
+    // var current_language = $("body").attr("data-language");
+    //
+    // if (current_language != target_language) {
+    //   console.log(current_uri);
+    //   console.log(target_language);
+    //   console.log(this);
+    //
+    //   var target_uri = current_uri.replace(current_language, target_language);
+    //
+    //   console.log(target_uri);
+    // }
+  });
+});

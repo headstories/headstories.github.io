@@ -1,0 +1,13 @@
+.more-block {
+  color: $brand-primary;
+  display: block;
+  line-height: 1;
+
+  &:hover {
+    color: $brand-primary;
+  }
+}
+
+p + p .more-block {
+  margin-top: -$space-medium;
+}
