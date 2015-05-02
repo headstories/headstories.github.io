@@ -10,7 +10,7 @@ slides:
   materials:
     active: true
     title: Materials
-    body: Our shop is made of all natural and environmentally friendly materials. The unobtrusive smell of wood and leather create a cordial and warm atmosphere. This attitude goeas along with everything we do. Our goal is to give you an all natural experience.
+    body: Our shop is made of all natural and environmentally friendly materials. The unobtrusive smell of wood and leather create a cordial and warm atmosphere. This attitude goes along with everything we do. Our goal is to give you an all natural experience.
     img: /dist/img/about-us/location/materials.jpg
     img2x: /dist/img/about-us/location/materials@2x.jpg
     prev: Colors
