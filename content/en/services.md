@@ -138,7 +138,7 @@ keywords: head stories, anne stietzel, chemnitz, haircut, consulting, premium
 
     <tr class="table-divider">
       <td>
-        <b>Bartrasur/-pflege</b>
+        <b>beard shave/-care</b>
       </td>
       <td>
         from 10 EUR
@@ -146,7 +146,7 @@ keywords: head stories, anne stietzel, chemnitz, haircut, consulting, premium
     </tr>
     <tr class="table-divider">
       <td>
-        <b>Augenbrauen färben</b>
+        <b>eyebrows coloring</b>
       </td>
       <td>
         6 EUR
@@ -154,7 +154,7 @@ keywords: head stories, anne stietzel, chemnitz, haircut, consulting, premium
     </tr>
     <tr class="table-divider">
       <td>
-        <b>Augenbrauen zupfen</b>
+        <b>eyebrows blicking</b>
       </td>
       <td>
         6 EUR
@@ -162,28 +162,10 @@ keywords: head stories, anne stietzel, chemnitz, haircut, consulting, premium
     </tr>
     <tr class="table-divider">
       <td>
-        <b>Wimpern färben</b>
+        <b>eyelashes coloring</b>
       </td>
       <td>
         8 EUR
-      </td>
-    </tr>
-
-    <tr class="table-divider">
-      <td colspan="2">
-      </td>
-    </tr>
-    <tr class="table-divider">
-      <td colspan="2">
-        komplette Typberatung
-      </td>
-    </tr>
-    <tr class="table-divider">
-      <td>
-        Buchbar für Shootings und andere Events (Special Effects, Film und Fernsehen)
-      </td>
-      <td>
-
       </td>
     </tr>
   </tbody>
