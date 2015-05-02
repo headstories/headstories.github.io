@@ -45,20 +45,12 @@ keywords: head stories, anne stietzel, chemnitz, haircut, consulting, premium
 
     <tr class="table-divider">
       <td colspan="2">
-        <b>hair color</b>
+        <b>Hair Color</b>
       </td>
     </tr>
     <tr>
       <td>
-        Ansatzfarbe
-      </td>
-      <td>
-        from 35 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        hair color (neu)
+        hair color
       </td>
       <td>
         from 40 EUR
@@ -66,15 +58,7 @@ keywords: head stories, anne stietzel, chemnitz, haircut, consulting, premium
     </tr>
     <tr>
       <td>
-        Foliensträhnen
-      </td>
-      <td>
-        according to expenditure
-      </td>
-    </tr>
-    <tr>
-      <td>
-        hair color, Refreshing
+        hair color, refreshing
       </td>
       <td>
         according to expenditure
@@ -91,7 +75,7 @@ keywords: head stories, anne stietzel, chemnitz, haircut, consulting, premium
     </tr>
     <tr class="table-divider">
       <td>
-        <b>bride styling, event styling</b>
+        <b>Bride Styling, Event Styling</b>
       </td>
       <td>
         from 100 EUR
@@ -99,7 +83,7 @@ keywords: head stories, anne stietzel, chemnitz, haircut, consulting, premium
     </tr>
     <tr class="table-divider">
       <td>
-        <b>pin up</b>
+        <b>Pin Up</b>
       </td>
       <td>
         according to expenditure
@@ -107,7 +91,7 @@ keywords: head stories, anne stietzel, chemnitz, haircut, consulting, premium
     </tr>
     <tr>
       <td>
-        hair extension/-compaction
+        Hair Extension/-Compaction
       </td>
       <td>
         according to expenditure
@@ -116,7 +100,7 @@ keywords: head stories, anne stietzel, chemnitz, haircut, consulting, premium
 
     <tr class="table-divider">
       <td colspan="2">
-        <b>hair care</b>
+        <b>Hair Care</b>
       </td>
     </tr>
     <tr>
@@ -138,7 +122,7 @@ keywords: head stories, anne stietzel, chemnitz, haircut, consulting, premium
 
     <tr class="table-divider">
       <td>
-        <b>beard shave/-care</b>
+        <b>Beard Shave/-Care</b>
       </td>
       <td>
         from 10 EUR
@@ -146,7 +130,7 @@ keywords: head stories, anne stietzel, chemnitz, haircut, consulting, premium
     </tr>
     <tr class="table-divider">
       <td>
-        <b>eyebrows coloring</b>
+        <b>Eyebrows Coloring</b>
       </td>
       <td>
         6 EUR
@@ -154,7 +138,7 @@ keywords: head stories, anne stietzel, chemnitz, haircut, consulting, premium
     </tr>
     <tr class="table-divider">
       <td>
-        <b>eyebrows blicking</b>
+        <b>Eyebrows Plucking</b>
       </td>
       <td>
         6 EUR
@@ -162,7 +146,7 @@ keywords: head stories, anne stietzel, chemnitz, haircut, consulting, premium
     </tr>
     <tr class="table-divider">
       <td>
-        <b>eyelashes coloring</b>
+        <b>Wyelashes Coloring</b>
       </td>
       <td>
         8 EUR
