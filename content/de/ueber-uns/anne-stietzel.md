@@ -13,4 +13,4 @@ keywords: head stories, anne stietzel, friseur, chemnitz, friseurbedarf, beratun
 Anne will eine der Top-Adressen ihrer Branche werden. Dabei bleibt sie stets leidenschaftlich und entschlossen. Durch ihre „sehr gut“ abgeschlossene Ausbildung erhielt sie ein Stipendium des Bundesministeriums für Bildung und Forschung.
 
 
-2014 nutze Anne ihre Chance eine professionelle Hair & Make up Artistin, Stilberaterin und Fashion Stylistin an der Beauty and Fame Academy in München zu werden. Diese angesehenen Abschlüsse sowie ihre abgeschlossene Meisterausbildung ermöglichten ihr head stories innerhalb weniger Monate am 5. Januar 2015 zu eröffnen.
+2014 nutzte Anne ihre Chance eine professionelle Hair & Make up Artistin, Stilberaterin und Fashion Stylistin an der Beauty and Fame Academy in München zu werden. Diese angesehenen Abschlüsse sowie ihre abgeschlossene Meisterausbildung ermöglichten ihr head stories innerhalb weniger Monate am 5. Januar 2015 zu eröffnen.
