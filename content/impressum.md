@@ -6,7 +6,7 @@ section: impressum
 body_class: impressum
 locale: de
 
-keywords: head stories, anne stietzel, chemnitz, friseur
+keywords: head stories, anne mann, chemnitz, friseur
 ---
 # Impressum
 
@@ -20,7 +20,7 @@ keywords: head stories, anne stietzel, chemnitz, friseur
 </p>
 <p>
   Inhaltlich Verantwortlicher gemäß § 6 MDStV:<br>
-  Anne Stietzel
+  Anne Mann
 </p>
 <p>
   <h4>Social Media</h4>
