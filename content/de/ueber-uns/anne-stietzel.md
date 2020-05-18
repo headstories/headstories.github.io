@@ -1,6 +1,6 @@
 ---
 slug: anne-stietzel
-title: Anne Stietzel
+title: Anne Mann
 layout: main
 section: about_us
 body_class: anne-stietzel
