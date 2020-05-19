@@ -9160,8 +9160,8 @@ Copyright (c) 2015 Daniel Eden
       padding: 10px; } }
 .navbar-nav.nav > li:hover a, .navbar-nav.nav > li.active a {
   background: white;
-  border-color: #95807B;
-  color: #95807B; }
+  border-color: #a3918c;
+  color: #a3918c; }
 @media (min-width: 768px) {
   .navbar-nav.navbar-right {
     margin: 0; } }
@@ -9359,7 +9359,7 @@ h4 {
   margin-bottom: 40px; }
 
 blockquote {
-  border-color: #95807B; }
+  border-color: #a3918c; }
   blockquote p {
     margin-bottom: 5px; }
 
@@ -9388,7 +9388,7 @@ blockquote {
     text-transform: lowercase; }
   .subnavigation li.active a,
   .subnavigation li a:hover {
-    color: #95807B;
+    color: #a3918c;
     text-decoration: none; }
   .subnavigation li.active a:hover {
     cursor: default; }
@@ -9498,7 +9498,7 @@ blockquote {
     height: 14px;
     width: 14px; }
     .blueimp-gallery .indicator li.active {
-      border-color: #e1d3c6;
+      border-color: #a3918c;
       opacity: 1;
       height: 14px;
       width: 14px; }
@@ -9535,7 +9535,7 @@ blockquote {
   display: block;
   line-height: 1; }
   .more-block:hover {
-    color: #e1d3c6; }
+    color: #a3918c; }
 
 p + p .more-block {
   margin-top: -20px; }
