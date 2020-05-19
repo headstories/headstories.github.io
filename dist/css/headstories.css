@@ -9160,8 +9160,8 @@ Copyright (c) 2015 Daniel Eden
       padding: 10px; } }
 .navbar-nav.nav > li:hover a, .navbar-nav.nav > li.active a {
   background: white;
-  border-color: #e1d3c6;
-  color: #e1d3c6; }
+  border-color: #a77e50;
+  color: #a77e50; }
 @media (min-width: 768px) {
   .navbar-nav.navbar-right {
     margin: 0; } }
