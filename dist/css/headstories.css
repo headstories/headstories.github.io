@@ -9632,7 +9632,7 @@ width: 100%;
    font: 16px/100% arial, sans-serif;
    position: absolute;
    right: 5px;
-   text-decoration: bold;
+   text-decoration: none;
    text-shadow: 0 1px 0 #fff;
    top: 5px;
    cursor:pointer;
@@ -9640,14 +9640,8 @@ width: 100%;
    border-left:1px solid white; 
    border-bottom:1px solid #7b92a9; 
    border-right:1px solid #7b92a9; 
-   padding:8px;
-   background: #ced6df; /* Old browsers */
-   background: -moz-linear-gradient(top, #ced6df0%, #f2f6f9 100%); 
-   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ced6df), color-stop(100%,#f2f6f9)); 
-   background: -webkit-linear-gradient(top, #ced6df0%,#f2f6f9 100%); 
-   background: -o-linear-gradient(top, #ced6df0%,#f2f6f9 100%); 
-   background: -ms-linear-gradient(top, #ced6df0%,#f2f6f9 100%); 
-   background: linear-gradient(to bottom, #ced6df0%,#f2f6f9 100%); 
+   padding:4px;
+   background: #fff
    filter: progid:DXImageTransform.Microsoft.gradient(    startColorstr='#ced6df', endColorstr='#f2f6f9',GradientType=0 ); 
  }
 #cookieconsentCloser:hover {
