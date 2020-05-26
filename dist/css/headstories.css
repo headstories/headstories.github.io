@@ -9618,7 +9618,7 @@ width: 100%;
    outline: 1px solid #7b92a9; 
    text-align:right; 
    border-top:1px solid #fff;
-   background: #fff; 
+   background: #3f3f3f; 
 
   
   
@@ -9629,7 +9629,7 @@ width: 100%;
    bottom:0px; 
    z-index:10000; 
    width:100%; 
-   font-size:12px; 
+   font-size:16px; 
    line-height:16px;}
 
 #cookieconsentCloser {
