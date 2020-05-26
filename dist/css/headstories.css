@@ -9618,7 +9618,7 @@ width: 100%;
    outline: 1px solid #7b92a9; 
    text-align:right; 
    border-top:1px solid #fff;
-   background: #d6e0eb; 
+   background: #fff; 
    background: -moz-linear-gradient(top, #d6e0eb 0%, #f2f6f9 100%); 
    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#d6e0eb), color-stop(100%,#f2f6f9)); 
    background: -webkit-linear-gradient(top, #d6e0eb 0%,#f2f6f9 100%); 
