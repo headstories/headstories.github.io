@@ -318,3 +318,21 @@ Augenbrauen zupfen
     </div>
   </footer>
 </body>
+<!-- cookieconsent -->
+<div id="cookieconsent"><div>
+  <span> Diese Webseite verwendet Cookies, um Dir ein angenehmeres Surfen zu ermöglichen. </span> 
+  <a href=" http://www.headstories.de/de/impressum.html"> Hier mehr zum Datenschutz</a></div>
+ <span id="cookieconsentCloser" onclick="document.cookie = 'hidecookieconsent=1;path=/';jQuery('#cookieconsent').slideUp()">&#10006;</span>
+</div>
+
+<script>
+ if(document.cookie.indexOf('hidecookieconsent=1') != -1){
+ jQuery('#cookieconsent').hide();
+ }
+ else{
+ jQuery('#cookieconsent').prependTo('body');
+ jQuery('#cookieconsentCloser').show();
+ }
+</script>
+
+<!-- end cookieconsent -->
