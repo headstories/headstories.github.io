@@ -9615,16 +9615,11 @@ width: 100%;
 #cookieconsent div {padding:10px; padding-right:40px;}
 
 #cookieconsent { 
+   color:#fff;  
    outline: 1px solid #7b92a9; 
    text-align:right; 
    border-top:1px solid #fff;
    background: #3f3f3f; 
-
-  
-  
-  
-  
-  
    position:fixed;
    bottom:0px; 
    z-index:10000; 
@@ -9655,5 +9650,9 @@ width: 100%;
    background: linear-gradient(to bottom, #ced6df0%,#f2f6f9 100%); 
    filter: progid:DXImageTransform.Microsoft.gradient(    startColorstr='#ced6df', endColorstr='#f2f6f9',GradientType=0 ); 
  }
-
-#cookieconsentCloser:hover {border-bottom:1px solid white; border-right:1px solid white; border-top:1px solid #7b92a9; border-left:1px solid #7b92a9;}
+#cookieconsentCloser:hover {
+  border-bottom:1px solid white; 
+  border-right:1px solid white; 
+  border-top:1px solid #7b92a9; 
+  border-left:1px solid #7b92a9;
+}
