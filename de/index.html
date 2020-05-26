@@ -34,6 +34,7 @@
 
     <!--   include css   -->
     <link rel="stylesheet" type="text/css" media="screen" href="/dist/css/headstories.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/dist/css/cookieconsent.min.css">
 
     <script src="/dist/js/headstories.js"></script>
 
@@ -58,7 +59,6 @@
   <header class="header">
       <div class="container">
       <div class="header-wrapper">
-
         <div class="logo-wrapper">
           <a href="/de/index.html">
             <img src="/dist/img/head-stories-vertical.jpg"
@@ -93,6 +93,7 @@
       </div>
     </div>
   </header>
+
   <div class="hidden"><h1 id="startseite">Friseur Friseursalon</h1>  </div>
   <div class="page">
     <div class="container">
@@ -144,4 +145,20 @@
       </div>
     </div>
   </footer>
+  <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
+<script>
+window.cookieconsent.initialise({
+"palette": {
+"popup": { "background": "#216942", "text": "#b2d192"},
+"button": { "background": "#afed71"}},
+  "theme": "edgeless",
+  "position": "bottom-right",
+  "content": {
+  "message": "Diese Webseite verwendet Cookies, um Ihnen ein angenehmeres Surfen zu ermöglichen.",
+  "dismiss": "Got it!",
+  "link": "Learn more",
+"href": "https://www.cookiesandyou.com/"
+}
+  });
+</script>
 </body>
