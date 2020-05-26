@@ -9641,8 +9641,8 @@ width: 100%;
    border-bottom:1px solid #7b92a9; 
    border-right:1px solid #7b92a9; 
    padding:4px;
-   background: #000
-   filter: progid:DXImageTransform.Microsoft.gradient(    startColorstr='#ced6df', endColorstr='#f2f6f9',GradientType=0 ); 
+   background: #fff
+   
  }
 #cookieconsentCloser:hover {
   border-bottom:1px solid white; 
