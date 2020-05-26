@@ -125,3 +125,19 @@
     </div>
   </footer>
 </body>
+<!-- cookieconsent -->
+<div id="cookieconsent"><div>
+  <span> Durch die Nutzung unserer Website bestätigst Du, dass Du unsere <a href=" http://www.headstories.de/de/impressum.html">Cookie-u. Datenschutzerklärung</a></span> gelesen und verstanden hast. </div> 
+  <span id="cookieconsentCloser" onclick="document.cookie = 'hidecookieconsent=1;path=/';jQuery('#cookieconsent').slideUp()">&#10006;</span>
+</div>
+
+<script>
+ if(document.cookie.indexOf('hidecookieconsent=1') != -1){
+ jQuery('#cookieconsent').hide();
+ }
+ else{
+ jQuery('#cookieconsent').prependTo('body');
+ jQuery('#cookieconsentCloser').show();
+ }
+</script>
+<!-- end cookieconsent -->
