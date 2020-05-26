@@ -9608,7 +9608,7 @@ position: absolute;
 top: 0;
 width: 100%;
 }
-#cookieconsent a {color:#000; text-decoration:none;}
+#cookieconsent a {color:#fff; text-decoration:none;}
 
 #cookieconsent a:hover {text-decoration:underline;}
 
