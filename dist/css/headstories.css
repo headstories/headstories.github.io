@@ -9617,7 +9617,7 @@ width: 100%;
 #cookieconsent { 
    color:#fff;  
    outline: 1px solid #7b92a9; 
-   text-align:right; 
+   text-align:center; 
    border-top:1px solid #fff;
    background: #3f3f3f; 
    position:fixed;
