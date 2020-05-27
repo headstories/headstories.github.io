@@ -1,4 +1,4 @@
-﻿# Domainumleitung mit http und ohne www
+# Domainumleitung mit http und ohne www
 RewriteEngine on
 RewriteCond %{HTTP_HOST} ^www\.headstories\.de [NC]
 RewriteRule (.*) http://headstories.de/$1 [R=301,L]
