@@ -1,9 +1,7 @@
-# Domainumleitung mit http und ohne www
 RewriteEngine on
 RewriteCond %{HTTP_HOST} ^www\.headstories\.de [NC]
 RewriteRule (.*) http://headstories.de/$1 [R=301,L]
 
-# Interne 301 Weiterleitungen Alt zu Neu
 RedirectPermanent /de/index.html http://headstories.de/index.html
 RedirectPermanent /en/index.html http://headstories.de/index.html
 RedirectPermanent /impressum.html http://headstories.de/de/impressum.html
