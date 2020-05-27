@@ -1,5 +1,4 @@
-http://www.headstories.de/de/
-http://www.headstories.de/de/index.html
+http://www.headstories.de/index.html
 http://www.headstories.de/de/ueber-uns.html
 http://www.headstories.de/de/lookbook.html
 http://www.headstories.de/de/leistungen.html
