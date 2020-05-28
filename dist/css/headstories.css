@@ -9261,11 +9261,11 @@ Copyright (c) 2015 Daniel Eden
   min-height: 1px;
   padding-left: 20px;
   padding-right: 20px; }
-  @media (min-width: 748px) {
+  @media (min-width: 768px) {
     .page-content-right {
       float: left;
       width: 50%; } }
-  @media (max-width: 747px) {
+  @media (max-width: 767px) {
     .page-content-right {
       padding-left: 10px;
       padding-right: 10px; } }
@@ -9273,7 +9273,7 @@ Copyright (c) 2015 Daniel Eden
 .page-content-left img,
 .page-content-right img {
   max-width: 150%;
-  width: 560px; }
+  width: 545px; }
 
 @media (max-width: 767px) {
   .page-content-left {
