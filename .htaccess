@@ -1,8 +1,6 @@
-RewriteEngine on
-RewriteCond %{HTTP_HOST} ^\.headstories\.de [NC]
-RewriteRule (.*) https://www.headstories.de/$1 [R=301,L]
-RewriteCond %{SERVER_PORT} !^443$
-RewriteRule (.*) https://%{HTTP_HOST}/$1 [R=301,L]
+RewriteEngine On
+RewriteCond %{SERVER_PORT} !=443
+RewriteRule ^(.*)$ https://www.headstories.de/$1 [R=301,L]
 
 RewriteRule /de/index.html https://www.headstories.de/index.html
 RewriteRule /en/index.html https://www.headstories.de/index.html
