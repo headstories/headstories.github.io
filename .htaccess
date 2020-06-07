@@ -1,16 +1,27 @@
 RewriteEngine on
 RewriteCond %{HTTP_HOST} ^www\.headstories\.de [NC]
-RewriteRule (.*) http://headstories.de/$1 [R=301,L]
+RewriteRule (.*) https://www.headstories.de/$1 [R=301,L]
+RewriteEngine On
+RewriteCond %{SERVER_PORT} !^443$
+RewriteRule (.*) https://%{HTTP_HOST}/$1 [R=301,L]
 
-RedirectPermanent /de/index.html http://headstories.de/index.html
-RedirectPermanent /en/index.html http://headstories.de/index.html
-RedirectPermanent /impressum.html http://headstories.de/de/impressum.html
-RedirectPermanent /en/lookbook.html http://headstories.de/de/lookbook.html
-RedirectPermanent /en/contact.html http://headstories.de/de/kontakt.html
-RedirectPermanent /en/services.html http://headstories.de/de/leistungen.html
-RedirectPermanent /en/about-us/location.html http://headstories.de/de/ueber-uns/location.html
-RedirectPermanent /en/about-us/quality.html http://headstories.de/de/ueber-uns/qualitaet.html
-RedirectPermanent /en/about-us/anne-stietzel.html http://headstories.de/de/ueber-uns/anne-mann.html
-RedirectPermanent /en/about-us/our-story.html http://headstories.de/de/ueber-uns/unsere-geschichte.html
-
-
+RedirectPermanent /de/index.html https://www.headstories.de/index.html
+RedirectPermanent /en/index.html https://www.headstories.de/index.html
+RedirectPermanent /impressum.html https://www.headstories.de/de/impressum.html
+RedirectPermanent /en/lookbook.html https://www.headstories.de/de/lookbook.html
+RedirectPermanent /en/contact.html https://www.headstories.de/de/kontakt.html
+RedirectPermanent /en/services.html https://www.headstories.de/de/leistungen.html
+RedirectPermanent /en/about-us/location.html https://www.headstories.de/de/ueber-uns/location.html
+RedirectPermanent /en/about-us/quality.html https://www.headstories.de/de/ueber-uns/qualitaet.html
+RedirectPermanent /en/about-us/anne-stietzel.html https://www.headstories.de/de/ueber-uns/anne-mann.html
+RedirectPermanent /en/about-us/our-story.html https://www.headstories.de/de/ueber-uns/unsere-geschichte.html
+RedirectPermanent /de/leistungen.html https://www.headstories.de/de/leistungen.html
+RedirectPermanent /de/lookbook.html https://www.headstories.de/de/lookbook.html
+RedirectPermanent /de/kontakt.html https://www.headstories.de/de/kontakt.html
+RedirectPermanent /de/impressum.html https://www.headstories.de/de/impressum.html
+RedirectPermanent /de/kontakt.html https://www.headstories.de/de/kontakt.html
+RedirectPermanent /de/ueber-uns.html https://www.headstories.de/de/ueber-uns.html
+RedirectPermanent /de/ueber-uns/unsere-geschichte.html https://www.headstories.de/de/ueber-uns/unsere-geschichte.html
+RedirectPermanent /de/ueber-uns/location.html https://www.headstories.de/de/ueber-uns/location.html
+RedirectPermanent /de/ueber-uns/qualitaet.html https://www.headstories.de/de/ueber-uns/qualitaet.html
+RedirectPermanent /de/ueber-uns/anne-mann.html https://www.headstories.de/de/ueber-uns/anne-mann.html
