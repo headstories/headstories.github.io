@@ -9345,15 +9345,15 @@ h2 {
 
 h3 {
   font-family: 'Josefin Sans', sans-serif;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 700;
-  text-transform: uppercase; }
+  text-transform: none; }
 
 h4 {
   font-family: 'Josefin Sans', sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 700;
-  text-transform: uppercase; }
+  text-transform: none; }
 
 .row, .front-teasers {
   margin-bottom: 40px; }
