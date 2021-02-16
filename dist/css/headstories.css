@@ -9520,6 +9520,12 @@ blockquote {
   .table-services td:nth-child(2) {
     width: 50%; }
 
+.table-times {
+  margin-bottom: 40px;
+  width: 50%; }
+  .table-services td:nth-child(2) {
+    width: 25%; }
+
 .table-divider td {
   padding-top: 15px; }
 
